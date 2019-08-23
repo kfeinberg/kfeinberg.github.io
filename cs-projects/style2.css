@@ -1,0 +1,56 @@
+body {
+    font-family: monotype-grotesque, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 4%;
+    padding-bottom: 6%;
+}
+
+h1 {
+    font-size: 42px;
+    color: #4bdca3;
+}
+
+h1, h2 {
+    font-family: monotype-grotesque, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 15px;
+}
+
+.project-pic {
+    width: 70%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.project-date {
+    text-transform: uppercase;
+    color: grey;
+}
+
+.project-technology-section {
+    text-transform: uppercase; 
+}
+
+.project-technology {
+    font-size: 14px;
+    background-color: #E8E8E8;
+    padding-left: .7%;
+    padding-right: .7%;
+    padding-top: .1%;
+    padding-bottom: .1%;
+    margin-right: 3%;
+
+}
+.project-description {
+    display: block;
+}

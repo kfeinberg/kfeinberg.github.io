@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Kalissa Feinberg</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.typekit.net/fwo1rup.css">
+        <link rel="stylesheet" type="text/css" href="style2.css">
+    </head>
+
+    <body>
+        <h1>Mastermind Guessing Algorithm</h1>
+        <h2 class = "project-date">Thursday November 22, 2018</h2>
+        <h2 class = "project-technology-section"> 
+            <span class = project-technology>Java</span>    
+        </h2>
+        <span class = "project-description">
+            For a final project in my Introduction to Computer Science (CSE 131) course, we were tasked with 
+            developing an algorithm to solve the classic MasterMind game in 12 moves or less. I
+            found a solution in 12 moves, but I wasn't happy with it; I saw many inefficiencies.
+            I did some research online, and utilizing minimax game theory, was able to develop a solution that ran
+            in 4.1 moves. My solution first created a large list of every possible guess, then, at each turn,
+            pulls the guess from the list that has the most in common with the other guesses left in the list,
+            allowing a user to maximize the number of guesses that are removed from the list each turn. Then, based on the feedback received by the game,
+            the algorithm removes all guesses from the list that cannot possibly be the solution. This pattern repeats until the 
+            solution is found. <a href = "https://github.com/kfeinberg/smart-guesser">Link to repository.</a>
+        </span>
+
+    </body>
+</html>

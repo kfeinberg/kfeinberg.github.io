@@ -1,0 +1,146 @@
+body {
+    font-family: monotype-grotesque, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.intro-page {
+    z-index: 1;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: #4bdca3;
+}
+
+.navigator {
+    position: fixed;
+    right: 5%;
+    top: 5%;
+    text-align: right;
+    width: 100%;
+    font-weight: 300;
+    color: white;
+    font-size: 26px;
+    z-index: 4;
+}
+
+
+.name-and-contact-info {
+    position: absolute;
+    top: 50%;
+    left: 16%;
+}
+
+.name {
+    font-weight: 300;
+    color: white;
+    font-size: 70px;
+}
+
+.contact-info {
+    font-size: 26px;
+    font-weight: 300;
+    color: white;
+}
+
+.all-content {
+    z-index: 2;
+    position: absolute;
+    top: 100%;
+}
+
+.green-rectangle {
+    height: 10px;
+    width: 100%;
+    background-color: #4bdca3;
+}
+
+.about-me {
+    background-color: white;
+}
+
+.past-positions {
+    font-style: italic;
+    width: 100%;
+    margin-bottom: 3%;
+}
+.company {
+    background-color: #4bdca3;
+    padding-left: .6%;
+    padding-right: .6%;
+    color: white;
+}
+
+.headshot {
+    width: 35%;
+    margin-left: 20%;
+}
+
+.cs-projects {
+    background-color: #4bdca3;
+    position: relative;
+    color: white;
+}
+
+.cs-projects, .about-me, .design-projects {
+    padding-left: 11%;
+    padding-right: 11%;
+    padding-top: 7%;
+    padding-bottom: 7%;
+}
+
+.projects-header {
+    margin-bottom: 3%;
+}
+
+h1, h2, h3 {
+    font-weight: 300;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 38px;
+}
+
+.technology-header, .about-me-header {
+    margin-top: 4%;
+}
+
+.technology-header {
+    margin-bottom: 3%;
+}
+
+.cs-project-image {
+    width: 100%;
+    height: 160px;
+    margin-bottom: 5%;
+}
+
+.cs-project-name {
+    font-size: 20px;
+    line-height: 22px;
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+.cs-project-description {
+    font-size: 15px;
+}
+
+.design-projects {
+    background-color: white;
+    color: #4bdca3;
+}
