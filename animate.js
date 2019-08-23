@@ -1,4 +1,4 @@
-s$( ".name-and-contact-info" ).fadeIn( 3000 );
+$( ".name-and-contact-info" ).fadeIn( 3000 );
 
 $( ".contact-info" ).animate({
     top: "+=50%",
