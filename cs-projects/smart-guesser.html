@@ -8,22 +8,46 @@
     </head>
 
     <body>
-        <h1>Mastermind Guessing Algorithm</h1>
-        <h2 class = "project-date">Thursday November 22, 2018</h2>
-        <h2 class = "project-technology-section"> 
-            <span class = project-technology>Java</span>    
-        </h2>
-        <span class = "project-description">
-            For a final project in my Introduction to Computer Science (CSE 131) course, we were tasked with 
-            developing an algorithm to solve the classic MasterMind game in 12 moves or less. I
-            found a solution in 12 moves, but I wasn't happy with it; I saw many inefficiencies.
-            I did some research online, and utilizing minimax game theory, was able to develop a solution that ran
-            in 4.1 moves. My solution first created a large list of every possible guess, then, at each turn,
-            pulls the guess from the list that has the most in common with the other guesses left in the list,
-            allowing a user to maximize the number of guesses that are removed from the list each turn. Then, based on the feedback received by the game,
-            the algorithm removes all guesses from the list that cannot possibly be the solution. This pattern repeats until the 
-            solution is found. <a href = "https://github.com/kfeinberg/smart-guesser">Link to repository.</a>
-        </span>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"> 
+                        <a class = "nav" href="kalissafeinberg.com">home</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a class = "nav" href = "kalissafeinberg.com/#about-me">about</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a class = "nav" href="kalissafeinberg.com/#intro-page">resume</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a class = "nav" href = "kalissafeinberg.com/#cs-projects">projects</a> 
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class = "content">
+
+            <h1>Mastermind Guessing Algorithm</h1>
+            <h2 class = "project-date">Thursday November 22, 2018</h2>
+            <h2 class = "project-technology-section"> 
+                <span class = project-technology>Java</span>    
+            </h2>
+            <span class = "project-description">
+                For a final project in my Introduction to Computer Science (CSE 131) course, we were tasked with 
+                developing an algorithm to solve the classic MasterMind game in 12 moves or less. I
+                found a solution in 12 moves, but I wasn't happy with it; I saw many inefficiencies.
+                I did some research online, and utilizing minimax game theory, was able to develop a solution that ran
+                in 4.1 moves. My solution first created a large list of every possible guess, then, at each turn,
+                pulls the guess from the list that has the most in common with the other guesses left in the list,
+                allowing a user to maximize the number of guesses that are removed from the list each turn. Then, based on the feedback received by the game,
+                the algorithm removes all guesses from the list that cannot possibly be the solution. This pattern repeats until the 
+                solution is found. <a href = "https://github.com/kfeinberg/smart-guesser">Link to repository.</a>
+            </span>
+
+        </div>
 
     </body>
 </html>

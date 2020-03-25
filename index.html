@@ -3,151 +3,209 @@
     <head>
         <title>Kalissa Feinberg</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.typekit.net/fwo1rup.css">
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.typekit.net/fwo1rup.css">
     </head>
 
     <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"> 
+                        <a href="#intro-page">home</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a href = "#about-me">about</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a href="#intro-page">experience</a> 
+                    </li>
+                    <li class="nav-item"> 
+                        <a href = "#cs-projects">projects</a> 
+                    </li>
+                </ul>
+            </div>
+        </nav>
         
         
         <div class = "container-fluid">
             
             <div class="row intro-page" id = "intro-page">
-                <div class = "navigator"> 
-                        <a href="#intro-page">home</a> / 
-                        <a href = "#about-me">about</a> / 
-                        <a href = "#cs-projects">cs</a> 
-                        <!-- / <a href = "#projects">design</a>  -->
-                </div>
+
                  <div class = "name-and-contact-info">
-                    <h1 class = "name"> Kalissa Feinberg </h1>
+                    <h1 class = "name"> Kalissa <br> Feinberg </h1>
                     <div class = "contact-info"> 
                         <a href="./assets/resume.pdf" target="_blank"> resume </a> / 
                         <a href="https://github.com/kfeinberg" target="_blank"> github </a> / 
                         <a href="https://www.linkedin.com/in/kalissafeinberg/" target="_blank"> linkedin </a>
                     </div>
                 </div>
+            
             </div>
-            <div class = "all-content">
+            
+            <div class="row section" id = "about-me">
+                <h2 class = "about-me-header">about me</h2> 
+                <hr>
+                <h3 class = "past-positions">
+                    cs @ <span class = "company">brown university</span> <br>
+                    software engineering intern @ <span class = "company">j.p. morgan chase</span>  
+                </h3>
+
+                <div class = "col introduction">
+                    Hi, my name is Kalissa! I’m a junior at Brown University pursuing a concentration in computer science. 
+                    I am passionate about intuitive user experiences, technology as a means to improve society, and the role of 
+                    technology design in our everyday lives. Outside of the classroom, I have served as Webmaster of the Women in 
+                    Computer Science Club, teacher’s assistant in the courses Object Oriented Laboratory (CSE 332) and 
+                    Data Structures and Algorithms (CSE 247), and as an Engineering tutor. Some of my interests include tennis, frisbee,
+                    dark chocolate, and telling people that I am left-handed.
+                    On this website, you can find examples of various projects that I have worked on. Enjoy!
+                </div>
                 
-                <div class="row about-me" id = "about-me">
-                    <img src = "assets/headshot.png" class = "headshot">
-                    <div class = "green-rectangle"></div>
-                    <h2 class = "about-me-header">about me</h2>
-                    <h3 class = "past-positions">former software engineering intern @ <span class = "company">j.p. morgan chase</span>  <br>  junior @ <span class = "company">brown university</span></h3>
-                    <div class = "introduction">
-                        Hi, my name is Kalissa! I’m a rising junior at Brown University pursuing a concentration in computer science. I am passionate about intuitive user experiences, technology as a means to improve society, and the role of 
-                        technology design in our everyday lives. I previously attended Washington University in St. Louis where I served as Webmaster of the Women in 
-                        Computer Science Club, teacher’s assistant in the courses Object Oriented Laboratory (CSE 332) and 
-                        Data Structures and Algorithms (CSE 247), and as an Engineering tutor. 
+                <div class="col">
+                    <img src = "assets/headshot.jpg" class = "headshot">
+                </div>
+
+                <!-- <h2 class = "technology-header">technology</h2>
+                <div class = "technology">
+                    Java • Python • Arduino C • JavaScript - Node.js • HTML • CSS - Boostrap • C++ • PHP • 
+                    AVR Assembly • LaTeX • Git • SQL - MySQL, MariaDB • AWS 
+                </div> -->
+            </div>
+
+            <div class="row experience section" id = "experience">
+                
+                <h2 class = "experience-header">work experience</h2> 
+                <hr>
+
+                <div class = "experience-section">
+                    
+                    <div class = "row">
+                        <div class = "col-1 company-logo-section"> 
+                            <img src = "assets/jp.png" class = "company-logo"> 
+                        </div>
+                        <div class = "col-10 company-information">
+                            <div class = "company">J.P. Morgan Chase</div>
+                            <div class = "date"> June 2019 - August 2019 </div>
+                            <div class = "project-technology-section"> 
+                                <span class = project-technology>GraphQL</span>    
+                                <span class = project-technology>Java</span>
+                                <span class = project-technology>JavaScript</span>
+                                <span class = project-technology>Spring Boot</span>
+                            </div>
+                            <ul class = "description">
+                                <li>Built backend for site that onboards applications to data monitoring services</li>
+                                <li>Increased speed of data transfer between teams by 24 hours</li>
+                                <li>Automated onboarding processes; 8 hours/week less manual work</li>
+                            </ul>
+                        </div>
                         
-                        Outside of computer science, I enjoy working on graphic design projects. Many of my pieces so far have focused on clean, thoughtful
-                        communication to a viewer, as well as rethinking literary pieces through visual means. Some of my hobbies include tennis, playing guitar,
-                        rock climbing, eating dark chocolate, and telling people that I am left-handed.
+                        <div class="w-100"></div>
 
-                        On this website, you can find examples of both design and computer science projects I have worked on. Enjoy!
+                        <div class = "col-1 company-logo-section"> 
+                            <img src = "assets/gwc.png" class = "company-logo"> 
+                        </div>
+                        <div class = "col-10 company-information">
+                            <div class = "company">Girls Who Code</div>
+                            <div class = "date"> June 2018 - August 2018 </div>
+                            <div class = "project-technology-section"> 
+                                <span class = project-technology>Python</span>    
+                                <span class = project-technology>JavaScript</span>
+                                <span class = project-technology>Arduino-C</span>
+                            </div>
+                            <ul class = "description">
+                                <li>Assisted in teaching Python, Robotics, Web Development, and Data Science to classroom of 40 high school girls</li>
+                                <li>Increased speed of data transfer between teams by 24 hours</li>
+                                <li>Automated onboarding processes; 8 hours/week less manual work</li>
+                            </ul>
+                        </div>
                     </div>
-                    <h2 class = "technology-header">technology</h2>
-                    <div class = "technology">
-                        Java • Python • Arduino C • JavaScript - Node.js • HTML • CSS - Boostrap • C++ • PHP • 
-                        AVR Assembly • LaTeX • Git • SQL - MySQL, MariaDB • AWS 
+
+                    <div class = "experience-subheader">technology</div>
+
+                    <div class = "project-technology-section"> 
+                        <span class = project-technology>Java</span>
+                        <span class = project-technology>Python</span>
+                        <span class = project-technology>C++</span>
+                        <span class = project-technology>JavaScript</span>
+                        <span class = project-technology>HTML</span>    
+                        <span class = project-technology>CSS</span>
+                        <span class = project-technology>PHP</span>
+                        <span class = project-technology>Node.js</span>
+                        <span class = project-technology>LaTeX</span>
+                        <span class = project-technology>Git</span>
                     </div>
-                </div>
                 
-                <div class="row cs-projects" id = "cs-projects">
-                    <h2 class = "projects-header">selected cs projects</h2>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="cs-projects/chat-room.html">
-                                <img src = "assets/chat-server.png" class = "cs-project-image">
-                                <div class = "cs-project-name">Node.JS Chatroom</div>
-                            </a>
-                                <div class = "cs-project-description"> 
-                                    Series of chat rooms; developed with Node.js, Socket.io for communication 
-                                    between the client and server. 
-                                </div>
-                            
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="cs-projects/js-calendar.html">
-                                <img src = "assets/calendar.png" class = "cs-project-image">
-                                <div class = "cs-project-name">Javascript Calendar</div>
-                            </a>
-                                <div class = "cs-project-description">
-                                    Online calendar created with an HTML template found online; 
-                                    PHP for web security and database interaction, Bootstrap for styling,and vanilla JavaScript for the functionality.
-                                </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="cs-projects/word-catcher.html">
-                                <img src = "assets/extension.png" class = "cs-project-image">
-                                <div class = "cs-project-name">Word Catcher Chrome Extension</div>
-                            </a>
-                                <div class = "cs-project-description">
-                                    Chrome extension that saves words a user looks up to study later; developed with HTML, CSS, and vanilla JavaScript.
-                                </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="cs-projects/smart-guesser.html">
-                                <img src = "assets/mastermind.jpg" class = "cs-project-image">
-                                <div class = "cs-project-name">MasterMind Guessing Algorithm</div>
-                            </a>
-                                <div class = "cs-project-description">
-                                    Algorithm that utilizes minimax game theory to solve MasterMind game in nearly optimal time.
-                                </div>
-                        </div>
-                    </div>
                 </div>
-<!-- 
-                <div class="row design-projects" id = "design-projects">
-                    <h2 class = "projects-header">selected design projects</h2>
-                    <div class="row">
-                        <div class="col">
-                            <img src = "assets/chat-server.png" class = "cs-project-image">
-                            <div class = "cs-project-name">MO Deck</div>
-                            <div class = "cs-project-description"></div>
-                        </div>
-                        <div class="col">
-                            <img src = "assets/calendar.png" class = "cs-project-image">
-                            <div class = "cs-project-name">Mannikin Yearbook</div>
-                            <div class = "cs-project-description"></div>
-                        </div>
-                        <div class="col">
-                            <img src = "assets/extension.png" class = "cs-project-image">
-                            <div class = "cs-project-name">37 USW</div>
-                            <div class = "cs-project-description"></div>
-                        </div>
-                        <div class="col">
-                            <img src = "assets/mastermind.jpg" class = "cs-project-image">
-                            <div class = "cs-project-name">Record Newspaper</div>
-                            <div class = "cs-project-description"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="col">
-                                <img src = "assets/chat-server.png" class = "cs-project-image">
-                                <div class = "cs-project-name">Giving Tree Diagram</div>
-                                <div class = "cs-project-description"></div>
-                            </div>
-                            <div class="col">
-                                <img src = "assets/calendar.png" class = "cs-project-image">
-                                <div class = "cs-project-name">Odyssean Subway Journey</div>
-                                <div class = "cs-project-description"></div>
-                            </div>
-                            <div class="col">
-                                <img src = "assets/extension.png" class = "cs-project-image">
-                                <div class = "cs-project-name">37 USW</div>
-                                <div class = "cs-project-description"></div>
-                            </div>
-                            <div class="col">
-                                <img src = "assets/mastermind.jpg" class = "cs-project-image">
-                                <div class = "cs-project-name">Record Newspaper</div>
-                                <div class = "cs-project-description"></div>
-                            </div>
-                    </div> -->
 
+
+            </div>
+
+            
+            <div class="row section" id = "cs-projects">
+                <h2 class = "projects-header">projects</h2>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="cs-projects/chat-room.html">
+                            <img src = "assets/chat-server.png" class = "cs-project-image">
+                            <div class = "cs-project-name">Node.JS Chatroom</div>
+                        </a>
+                            <div class = "cs-project-description"> 
+                                Series of chat rooms; developed with Node.js, Socket.io for communication 
+                                between the client and server. 
+                            </div>
+                        
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="cs-projects/js-calendar.html">
+                            <img src = "assets/calendar.png" class = "cs-project-image">
+                            <div class = "cs-project-name">Javascript Calendar</div>
+                        </a>
+                            <div class = "cs-project-description">
+                                Online calendar created with an HTML template found online; 
+                                PHP for web security and database interaction, Bootstrap for styling,and vanilla JavaScript for the functionality.
+                            </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="cs-projects/word-catcher.html">
+                            <img src = "assets/extension.png" class = "cs-project-image">
+                            <div class = "cs-project-name">Word Catcher Chrome Extension</div>
+                        </a>
+                            <div class = "cs-project-description">
+                                Chrome extension that saves words a user looks up to study later; developed with HTML, CSS, and vanilla JavaScript.
+                            </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="cs-projects/smart-guesser.html">
+                            <img src = "assets/mastermind.jpg" class = "cs-project-image">
+                            <div class = "cs-project-name">MasterMind Guessing Algorithm</div>
+                        </a>
+                            <div class = "cs-project-description">
+                                Algorithm that utilizes minimax game theory to solve MasterMind game in nearly optimal time.
+                            </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="assets/FinalProject.pdf">
+                            <img src = "assets/turing.jpeg" class = "cs-project-image">
+                            <div class = "cs-project-name">Turing Test Paper</div>
+                        </a>
+                            <div class = "cs-project-description">
+                                A paper I wrote for class about important moments in the legacy of the Turing Test.
+                            </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <a href="cs-projects/design.html">
+                            <img src = "assets/modeck1.png" class = "cs-project-image">
+                            <div class = "cs-project-name">Design Work</div>
+                        </a>
+                            <div class = "cs-project-description">
+                                Some of the logos, decks and posters I've designed over the years.
+                            </div>
+                    </div>
                 </div>
+            </div>
             
             </div>
         </div>
