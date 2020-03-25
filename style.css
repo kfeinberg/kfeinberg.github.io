@@ -5,8 +5,8 @@ body {
 }
 
 a {
-    color: black;
     text-decoration: none;
+    color: black;
 }
 
 a:hover {
@@ -48,7 +48,6 @@ hr {
     font-family: acumin-pro,sans-serif;
     font-weight: 100;
     font-style: normal;
-    color: black;
     font-size: 100px;
     line-height: 95px;
     text-transform: uppercase;
@@ -67,21 +66,17 @@ hr {
     font-weight: 300;
 }
 
-
 #about-me {
     height: 100vh;
-}
-
-
-.past-positions {
-    width: 100%;
-    margin-bottom: 3%;
-    margin-left: 1%;
 }
 
 .company {
     color: black;
     font-weight: 600;
+}
+
+.past-positions {
+    margin-bottom: 5%;
 }
 
 .company-logo {
