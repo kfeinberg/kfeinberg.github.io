@@ -76,6 +76,7 @@ hr {
 .past-positions {
     width: 100%;
     margin-bottom: 3%;
+    margin-left: 1%;
 }
 
 .company {
@@ -88,7 +89,7 @@ hr {
 }
 
 .headshot {
-    width: 60%;
+    width: 50%;
     margin-left: 30%;
     margin-right: 50%;
 }
