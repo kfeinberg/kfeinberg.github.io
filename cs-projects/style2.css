@@ -22,8 +22,8 @@ a.nav:hover {
 }
 
 .navbar-nav > li {
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 22px;
+    padding-right: 22px;
 }
 
 .navbar {
