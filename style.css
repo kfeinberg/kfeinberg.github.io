@@ -2,15 +2,16 @@ body {
     font-family: acumin-pro,sans-serif;
     font-weight: 400;
     font-style: normal;
+    color: #2C2C2C;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: #2C2C2C;
 }
 
 a:hover {
-    color: black;
+    color: #2C2C2C;
     text-decoration: none;
 }
 
@@ -35,7 +36,7 @@ hr {
     clear: both;
     display:block;
     width: 100%;               
-    background-color:black;
+    background-color:#2C2C2C;
     height: 1px;
 }
 
@@ -66,13 +67,14 @@ hr {
     font-weight: 300;
 }
 
-#about-me {
-    height: 100vh;
+.company {
+    font-weight: 600;
 }
 
-.company {
-    color: black;
-    font-weight: 600;
+.position {
+    font-weight: 300;
+    font-style: italic;
+    padding-left: 3px;
 }
 
 .past-positions {
@@ -87,6 +89,7 @@ hr {
     width: 50%;
     margin-left: 30%;
     margin-right: 50%;
+    margin-top: 5%;
 }
 
 .experience-section {
@@ -118,7 +121,6 @@ hr {
 
 #cs-projects {
     position: relative;
-    color: black;
 }
 
 .section {
@@ -138,10 +140,6 @@ h3 {
 
 h2 {
     font-size: 38px;
-}
-
-.technology-header, .about-me-header {
-    margin-top: 4%;
 }
 
 .technology-header {

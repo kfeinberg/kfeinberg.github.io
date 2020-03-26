@@ -14,20 +14,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"> 
-                        <a href="#intro-page">home</a> 
+                        <a class = "nav-item-link" href="#intro-page">home</a> 
                     </li>
                     <li class="nav-item"> 
-                        <a href = "#about-me">about</a> 
+                        <a class = "nav-item-link" href = "#about-me">about</a> 
                     </li>
                     <li class="nav-item"> 
-                        <a href="#intro-page">experience</a> 
+                        <a class = "nav-item-link" href="#intro-page">experience</a> 
                     </li>
                     <li class="nav-item"> 
-                        <a href = "#cs-projects">projects</a> 
+                        <a class = "nav-item-link" href = "#cs-projects">projects</a> 
                     </li>
                 </ul>
             </div>
         </nav>
+        
         
         
         <div class = "container-fluid">
@@ -46,49 +47,65 @@
             </div>
             
             <div class="row section" id = "about-me">
-                <h2 class = "about-me-header">about me</h2> 
+                
+                <h2 class = "about-me-header">about me </h2> 
                 <hr>
-                
-                <!-- <h3 class = "past-positions">
-                    cs @ <span class = "company">brown university</span> <br>
-                    software engineering intern @ <span class = "company">j.p. morgan chase</span>  
-                </h3> -->
 
-                <div class = "col introduction">
+                <div class = "row">
+                    <div class = "col introduction">
 
-                    <h3 class = "past-positions">
-                        cs @ <span class = "company">brown university</span> <br>
-                        software engineering intern @ <span class = "company">j.p. morgan chase</span>  
-                    </h3>
+                        <h3 class = "past-positions">
+                            cs @ <span class = "company">brown university</span> <br>
+                            incoming software engineering intern @ <span class = "company">facebook</span>  
+                        </h3>
 
-                    Hi, my name is Kalissa. I’m a junior at Brown University pursuing a concentration in computer science. 
-                    I am passionate about intuitive user experiences, technology as a means to improve society, and the role of 
-                    technology design in our everyday lives. Outside of the classroom, I have served as Webmaster of the Women in 
-                    Computer Science Club, teacher’s assistant in the courses Object Oriented Laboratory (CSE 332) and 
-                    Data Structures and Algorithms (CSE 247), and as an Engineering tutor. Some of my interests include tennis, frisbee,
-                    dark chocolate, and telling people that I am left-handed.
-                    On this website, you can find examples of various projects that I have worked on. Enjoy!
-                </div>
-                
-                <div class="col">
-                    <img src = "assets/headshot.jpg" class = "headshot">
+                        Hi, my name is Kalissa. I’m a junior at Brown University pursuing a concentration in computer science. 
+                        I am passionate about intuitive user experiences, technology as a means to improve society, and the role of 
+                        technology design in our everyday lives. Outside of the classroom, I have served as Webmaster of the Women in 
+                        Computer Science Club, teacher’s assistant in the courses Object Oriented Laboratory (CSE 332) and 
+                        Data Structures and Algorithms (CSE 247), and as an Engineering tutor. Some of my interests include tennis, frisbee,
+                        dark chocolate, and telling people that I am left-handed.
+                        On this website, you can find examples of various projects that I have worked on. Enjoy!
+                    </div>
+                    
+                    <div class="col">
+                        <img src = "assets/headshot.jpg" class = "headshot">
+                    </div>
                 </div>
 
             </div>
 
             <div class="row experience section" id = "experience">
                 
-                <h2 class = "experience-header">work experience</h2> 
+                <h2 class = "experience-header"> experience </h2> 
                 <hr>
 
                 <div class = "experience-section">
+
+                    <div class = "experience-subheader">education</div>
+
+                    <div class = "row">
+                        <div class = "col-1 company-logo-section"> 
+                            <img src = "assets/brown.png" class = "company-logo"> 
+                        </div>
+                        <div class = "col-10 company-information">
+                            <div class = "company">Brown University</div>
+                            <div class = "date"> August 2017 - May 2019 </div>
+                            <ul class = "description">
+                                <li> Concentration in Computer Science </li>
+                                <li> GPA: 4.0 </li>
+                            </ul>
+                        </div>
+                    </div>
                     
+                    <div class = "experience-subheader">work</div>
+
                     <div class = "row">
                         <div class = "col-1 company-logo-section"> 
                             <img src = "assets/jp.png" class = "company-logo"> 
                         </div>
                         <div class = "col-10 company-information">
-                            <div class = "company">J.P. Morgan Chase</div>
+                            <div class = "company">J.P. Morgan Chase <span class = "position">Software Engineering Intern</span></div>
                             <div class = "date"> June 2019 - August 2019 </div>
                             <div class = "project-technology-section"> 
                                 <span class = project-technology>GraphQL</span>    
@@ -110,7 +127,7 @@
                             <img src = "assets/gwc.png" class = "company-logo"> 
                         </div>
                         <div class = "col-10 company-information">
-                            <div class = "company">Girls Who Code</div>
+                            <div class = "company">Girls Who Code <span class = "position">Teaching Assistant</span></div>
                             <div class = "date"> June 2018 - August 2018 </div>
                             <div class = "project-technology-section"> 
                                 <span class = project-technology>Python</span>    
@@ -119,8 +136,8 @@
                             </div>
                             <ul class = "description">
                                 <li>Assisted in teaching Python, Robotics, Web Development, and Data Science to classroom of 40 high school girls</li>
-                                <li>Increased speed of data transfer between teams by 24 hours</li>
-                                <li>Automated onboarding processes; 8 hours/week less manual work</li>
+                                <li>Oversaw students’ development and execution of final projects</li>
+                                <li>Worked with Pfizer executives to manage classroom logistics</li>
                             </ul>
                         </div>
                     </div>
