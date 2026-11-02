@@ -1,47 +1,79 @@
 <!doctype html>
-<html>
-    <head>
-        <title>Kalissa Feinberg</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.typekit.net/fwo1rup.css">
-        <link rel="stylesheet" type="text/css" href="style2.css">
-    </head>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"> 
-                    <a href="#intro-page">home</a> 
-                </li>
-                <li class="nav-item"> 
-                    <a href = "#about-me">about</a> 
-                </li>
-                <li class="nav-item"> 
-                    <a href="#intro-page">resume</a> 
-                </li>
-                <li class="nav-item"> 
-                    <a href = "#cs-projects">projects</a> 
-                </li>
-            </ul>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="PHP file sharing — an early web development project by Kalissa Feinberg."
+    />
+    <title>PHP File Sharing — Kalissa Feinberg</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="navigation shell" aria-label="Main navigation">
+        <a
+          class="wordmark"
+          href="../index.html"
+          aria-label="Kalissa Feinberg, home"
+          >kf<span aria-hidden="true">✳</span></a
+        >
+        <div class="nav-links">
+          <a href="../index.html#cs-projects">Work</a
+          ><a href="../index.html#about-me">About</a
+          ><a href="../index.html#experience">Experience</a
+          ><a class="nav-contact" href="../index.html#contact">Say hello ↗</a>
         </div>
-    </nav>
-
-    <body>
-
-        <h1>php file sharing site</h1>
-        <h2 class = "project-date">Monday September 10, 2018</h2>
-        <h2 class = "project-technology-section"> 
-            <span class = project-technology>PHP</span>    
-            <span class = project-technology>Html</span>
-            <span class = project-technology>CSS</span>
-            <span class = project-technology>Amazon EC2</span>
-        </h2>
-        <img src="./assets/file-sharing.png" class = "project-pic">
-        <span class = "project-description">
-            This project is the first one on this website that was not created by only me. I worked on this project with a classmate of mine in our “Rapid Prototype Development and Creative Programming” class.
-            It has simple functionality, but works similar to Dropbox. It is currently not password protected, but a user must enter a username to login to their dashboard and see their files. As a creative portion, we implemented the ability for a user to register themselves and also share their files with other users that have accounts on the website.
-            We mainly used PHP to create the site. It is hosted on an EC2 Instance hosted through AWS. 
-        </span>
-
-    </body>
+      </nav>
+    </header>
+    <main class="project-page shell" id="main">
+      <a class="back-link" href="../index.html#cs-projects"
+        >← Back to selected work</a
+      >
+      <p class="eyebrow">Project archive / Web development</p>
+      <h1>PHP file sharing<span class="name-period">.</span></h1>
+      <div class="project-meta">
+        <p class="project-date">
+          <time datetime="2018-09-10">September 10, 2018</time>
+        </p>
+        <ul class="tags" aria-label="Technologies">
+          <li>PHP</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Amazon EC2</li>
+        </ul>
+      </div>
+      <figure class="project-cover">
+        <img
+          src="../assets/file-sharing.png"
+          alt="File-sharing dashboard with file management controls"
+        />
+      </figure>
+      <div class="project-body">
+        <h2>A first step into building together.</h2>
+        <p>
+          I worked on this project with a classmate in Rapid Prototype
+          Development and Creative Programming. It offered simple file-sharing
+          functionality, similar to Dropbox.
+        </p>
+        <p>
+          Users could register, enter a username to access a dashboard, view
+          their files, and share files with other registered users. The
+          prototype was not password-protected.
+        </p>
+        <p>
+          We built the site primarily with PHP and hosted it on an AWS EC2
+          instance. This is an archived student prototype, not a currently
+          maintained file-sharing service.
+        </p>
+      </div>
+      <nav class="project-pagination" aria-label="More projects">
+        <a href="../index.html#cs-projects">← All projects</a
+        ><a href="chat-room.html">Explore: Node.js Chatroom →</a>
+      </nav>
+    </main>
+  </body>
 </html>
