@@ -56,6 +56,20 @@ const server = http.createServer((request, response) => {
         "NextMove",
       );
       assert.equal(await page.locator(".workflow-steps li").count(), 3);
+      assert.equal(
+        await page.locator(".nextmove-screenshot img").getAttribute("src"),
+        "../assets/nextmove-dashboard.png",
+      );
+      assert(
+        await page
+          .locator(".nextmove-screenshot img")
+          .evaluate((image) => image.complete && image.naturalWidth === 1440),
+      );
+      assert(
+        (
+          await page.locator(".nextmove-screenshot figcaption").innerText()
+        ).includes("Illustrative sample records"),
+      );
       const scan = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
         .analyze();

@@ -687,6 +687,14 @@ h3 {
   max-height: 560px;
   object-fit: contain;
 }
+.nextmove-screenshot img {
+  max-height: none;
+}
+.nextmove-screenshot figcaption {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
 .project-body {
   max-width: 700px;
   margin: 30px auto 0;

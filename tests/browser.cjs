@@ -81,6 +81,17 @@ async function verify() {
         await page.locator("#about-me .professional-bio").innerText(),
         /software engineer at Meta.*Applied AI.*privacy infrastructure.*VR/s,
       );
+      assert(
+        (
+          await page.locator("#about-me .professional-bio").innerText()
+        ).includes(
+          "Previously, I worked on privacy infrastructure and VR systems.",
+        ),
+      );
+      assert.equal(
+        await page.locator("#about-me .media-intro").innerText(),
+        "I’m Gen Z, so naturally I track all the media I consume. You can see what I’ve been reading and watching here:",
+      );
       assert.equal(
         await page.locator("#about-me .personal-bio").innerText(),
         "I’m based in Brooklyn and interested in public transit and urbanism. I play ultimate frisbee, padel, and volleyball, and I love building things.",
