@@ -21,14 +21,14 @@ npm test
 npm run format:check
 ```
 
-The tests start a loopback-only server and check five viewport widths, all seven HTML pages, navigation, filters, local links/images, the supplied résumé, the Meta section, and the removal of the bio and retired project links. They also verify the Pulse App Store link and that NextMove has no outbound app link. Automated WCAG A/AA scans, no-JavaScript fallback, and reduced motion are checked. Evidence is written to the ignored `test-results/` directory. Automated scans do not replace human accessibility review.
+The checks start loopback-only servers, cover responsive widths, filters, navigation, local links/images, the supplied résumé, About/Experience content, and retired project links. They also verify the supplied Goodreads and Letterboxd links and the NextMove detail page. Automated WCAG A/AA scans, no-JavaScript fallback, and reduced motion are checked. Browser evidence is written to the ignored `test-results/` directory. Automated scans do not replace human accessibility review.
 
 ## Content
 
-The old biography is replaced with the owner’s supplied details: Brooklyn, public transit and urbanism, ultimate frisbee/padel/volleyball, and enjoying building things. The homepage lists six projects, led by Pulse and NextMove. Pulse uses its public App Store listing and icon. NextMove is described as a vibe-coded personal tool; no private data, screenshots, or app URL are exposed. Chatroom, calendar, and PHP file sharing are removed from project navigation; their old detail URLs remain available for compatibility.
+About combines a brief professional Meta summary with the owner-supplied personal bio and links to Goodreads and Letterboxd. Experience retains earlier roles in a compact layout. Professional history is grounded in the supplied résumé and verified work history; internal task/diff URLs, implementation details, and internal operational metrics are not published. The résumé PDF is unchanged from the supplied file.
 
-The Meta section summarizes Applied AI, privacy infrastructure, and VR work. Role history and earlier accomplishments are grounded in the owner-supplied résumé; recent Applied AI focus areas are informed by work history. Internal task/diff identifiers, implementation details, and internal operational metrics are not included in the webpage. The résumé is the PDF supplied by the owner, unchanged.
+The homepage lists six projects, led by Pulse and NextMove. Pulse uses its public App Store listing and icon. NextMove links to a local detail page explaining the owner’s daily Muse email-to-dashboard workflow. No email contents, private dashboard screenshots, or private app URL are exposed. Chatroom, calendar, and PHP file sharing are removed from homepage project navigation; old detail URLs remain available for compatibility.
 
-The `intro-page`, `about-me`, `experience`, and `cs-projects` anchors are retained. The About section contains only the newly supplied biography. All six projects remain visible without JavaScript. Previous `cs-projects/style2.css` and `style3.css` files remain available but are not loaded by the refreshed pages.
+The `intro-page`, `about-me`, `experience`, and `cs-projects` anchors are retained. All six projects remain visible without JavaScript. Previous `cs-projects/style2.css` and `style3.css` files remain available but are not loaded by refreshed pages.
 
 Updates to `master` publish the live site. Review the branch before merging.

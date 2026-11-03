@@ -76,11 +76,19 @@ async function verify() {
         0,
       );
       assert.equal(await page.locator("#about-me.bio-section").count(), 1);
+      assert.equal(await page.locator("#about-me h2").innerText(), "About");
+      assert.match(
+        await page.locator("#about-me .professional-bio").innerText(),
+        /software engineer at Meta.*Applied AI.*privacy infrastructure.*VR/s,
+      );
       assert.equal(
-        await page.locator("#about-me p").innerText(),
+        await page.locator("#about-me .personal-bio").innerText(),
         "I’m based in Brooklyn and interested in public transit and urbanism. I play ultimate frisbee, padel, and volleyball, and I love building things.",
       );
-      assert.equal(await page.locator('a[href$="#about-me"]').count(), 0);
+      assert.equal(
+        await page.locator('.nav-links a[href="#about-me"]').count(),
+        1,
+      );
       assert.equal(await page.locator(".project-card").count(), 6);
       assert.equal(
         await page
@@ -107,18 +115,51 @@ async function verify() {
         "NextMove",
       );
       assert.equal(
-        await page.locator(".project-card").nth(1).locator("a").count(),
-        0,
+        await page
+          .locator(".project-card")
+          .nth(1)
+          .locator("a")
+          .getAttribute("href"),
+        "cs-projects/nextmove.html",
+      );
+      for (const [label, url] of [
+        ["Goodreads", "https://www.goodreads.com/user/show/2754883-kalli"],
+        ["Letterboxd", "https://letterboxd.com/kalissaa/"],
+      ]) {
+        const link = page
+          .locator("#about-me")
+          .getByRole("link", { name: new RegExp("^" + label) });
+        assert.equal(await link.getAttribute("href"), url);
+        assert.equal(await link.getAttribute("target"), "_blank");
+        assert((await link.getAttribute("rel")).includes("noopener"));
+      }
+      assert(
+        !(await page.locator("body").innerText())
+          .toLowerCase()
+          .includes("vibe"),
       );
       assert.equal(
         await page.locator('a[href="assets/resume.pdf"]').count(),
         2,
       );
-      assert.equal(await page.locator("#experience h2").innerText(), "At Meta");
+      assert.equal(
+        await page.locator("#experience h2").innerText(),
+        "Earlier experience",
+      );
       assert.equal(
         await page.locator("#experience .experience-row").count(),
         3,
       );
+      assert.deepEqual(await page.locator("#experience h3").allTextContents(), [
+        "Driver Technologies",
+        "J.P. Morgan Chase",
+        "Girls Who Code",
+      ]);
+      assert.deepEqual(
+        await page.locator("#experience .experience-date").allTextContents(),
+        ["Jan–Dec 2021", "Jun–Aug 2019", "Jun–Aug 2018"],
+      );
+      assert.equal(await page.locator("#experience .tags").count(), 0);
       assert.equal(
         (await page.locator(".hero .eyebrow").textContent()).trim(),
         "Engineering & building",
@@ -142,7 +183,7 @@ async function verify() {
           `${expected} projects`,
         );
       }
-      for (const target of ["#cs-projects", "#experience"]) {
+      for (const target of ["#cs-projects", "#about-me", "#experience"]) {
         await page.locator(`.nav-links a[href="${target}"]`).click();
         await page.waitForFunction((selector) => {
           const top = document
@@ -151,7 +192,15 @@ async function verify() {
           const height = document
             .querySelector(".site-header")
             .getBoundingClientRect().height;
-          return top >= height - 2 && top < height + 150;
+          const atEnd =
+            scrollY >= document.documentElement.scrollHeight - innerHeight - 2;
+          const headingBottom = document
+            .querySelector(`${selector} h2`)
+            .getBoundingClientRect().bottom;
+          return (
+            top >= height - 2 &&
+            (top < height + 150 || (atEnd && headingBottom <= innerHeight))
+          );
         }, target);
       }
       assert.deepEqual(errors, []);
@@ -208,7 +257,10 @@ async function verify() {
       );
       assert.equal(await page.locator("h1").count(), 1);
       assert.equal(await page.locator("main").count(), 1);
-      assert.equal(await page.locator('a[href$="#about-me"]').count(), 0);
+      assert.equal(
+        await page.locator('a[href$="#about-me"]').count(),
+        route ? 0 : 1,
+      );
       const broken = await page
         .locator("img")
         .evaluateAll((images) =>

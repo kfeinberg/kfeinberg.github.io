@@ -502,15 +502,19 @@ h3 {
 }
 .experience-section {
   border-top: 1px solid var(--line);
+  padding-block: 44px;
+}
+.experience-section .section-heading {
+  margin-bottom: 22px;
 }
 .experience-list {
   border-top: 1px solid var(--line);
 }
 .experience-row {
   display: grid;
-  grid-template-columns: 140px 1fr 1.2fr;
-  gap: 30px;
-  padding-block: 28px;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+  padding-block: 20px;
   border-bottom: 1px solid var(--line);
 }
 .experience-date {
@@ -518,18 +522,22 @@ h3 {
   color: var(--muted);
   padding-top: 4px;
 }
+.experience-detail h3 {
+  font-size: 20px;
+}
 .experience-role {
   font-size: 13px;
   color: var(--muted);
-  margin-top: 8px;
+  margin-top: 5px;
 }
 .experience-detail > p {
   font-size: 13px;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.65;
 }
-.experience-detail .tags {
-  margin-top: 14px;
+.experience-summary {
+  margin-top: 8px;
+  max-width: 65ch;
 }
 .contact-section {
   background: var(--ink);
@@ -580,24 +588,58 @@ h3 {
   border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 40px;
+  gap: 32px;
 }
-.bio-section > p {
-  max-width: 650px;
+.bio-section.section {
+  padding-block: 44px;
+}
+.bio-copy {
+  max-width: 65ch;
+}
+.bio-copy p {
   font-size: 16px;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.65;
+}
+.bio-copy p + p {
+  margin-top: 14px;
 }
 @media (max-width: 600px) {
   .bio-section {
     grid-template-columns: 1fr;
-    gap: 18px;
+    gap: 16px;
   }
-  .bio-section > p {
+  .bio-section.section {
+    padding-block: 32px;
+  }
+  .bio-copy p {
     font-size: 15px;
   }
 }
 /* Existing project URLs use the same typography and navigation. */
+.personal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 20px;
+}
+.workflow-steps {
+  padding-left: 22px;
+  color: var(--muted);
+}
+.workflow-steps li {
+  padding-left: 5px;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+.workflow-steps strong {
+  color: var(--ink);
+}
+@media (max-width: 600px) {
+  .personal-links {
+    grid-column: 1;
+  }
+}
 .project-page {
   max-width: 960px;
   padding-top: 45px;
@@ -707,7 +749,7 @@ h3 {
     padding: 20px;
   }
   .experience-row {
-    grid-template-columns: 100px 1fr 1.2fr;
+    grid-template-columns: 100px 1fr;
   }
 }
 @media (max-width: 800px) {
@@ -785,8 +827,8 @@ h3 {
     font-size: 30px;
   }
   .nav-links {
-    gap: 16px;
-    font-size: 12px;
+    gap: 10px;
+    font-size: 11px;
   }
   .hero {
     grid-template-columns: 1fr;
@@ -864,10 +906,13 @@ h3 {
     white-space: nowrap;
     margin-left: 0;
   }
+  .experience-section.section {
+    padding-block: 32px;
+  }
   .experience-row {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding-block: 26px;
+    gap: 8px;
+    padding-block: 20px;
   }
   .experience-detail {
     grid-column: 1;
