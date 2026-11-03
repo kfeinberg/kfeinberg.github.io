@@ -21,7 +21,7 @@ npm test
 npm run format:check
 ```
 
-The checks start loopback-only servers, cover responsive widths, filters, navigation, local links/images, the supplied résumé, About/Experience content, and retired project links. They also verify the supplied Goodreads and Letterboxd links and the NextMove detail page. Automated WCAG A/AA scans, no-JavaScript fallback, and reduced motion are checked. Browser evidence is written to the ignored `test-results/` directory. Automated scans do not replace human accessibility review.
+The checks start loopback-only servers and cover responsive and landscape layouts, all eight HTML pages, filters, keyboard controls, active navigation, 44px tap targets, local links/images, the supplied résumé, About/Experience content, and retired project links. They also verify the supplied Goodreads and Letterboxd links and the NextMove detail page. Automated WCAG A/AA scans, no-JavaScript fallback, and reduced motion are checked. Browser evidence is written to the ignored `test-results/` directory. Automated scans do not replace human accessibility review.
 
 ## Content
 
@@ -29,6 +29,6 @@ About combines a brief professional Meta summary with the owner-supplied persona
 
 The homepage lists six projects, led by Pulse and NextMove. Pulse uses its public App Store listing and icon. NextMove links to a local detail page explaining the owner’s daily Muse email-to-dashboard workflow. No email contents, private dashboard screenshots, or private app URL are exposed. Chatroom, calendar, and PHP file sharing are removed from homepage project navigation; old detail URLs remain available for compatibility.
 
-The `intro-page`, `about-me`, `experience`, and `cs-projects` anchors are retained. All six projects remain visible without JavaScript. Previous `cs-projects/style2.css` and `style3.css` files remain available but are not loaded by refreshed pages.
+The `intro-page`, `about-me`, `experience`, and `cs-projects` anchors are retained. About precedes Projects. A compact mobile intro keeps the bio accessible, navigation uses adaptive sticky-header offsets and highlights the current section, and project pages share consistent navigation. All six projects remain visible without JavaScript. The NextMove card uses the sample-data screenshot, and its detail page offers a full-size image link. Previous `cs-projects/style2.css` and `style3.css` files remain available but are not loaded by refreshed pages.
 
 Updates to `master` publish the live site. Review the branch before merging.

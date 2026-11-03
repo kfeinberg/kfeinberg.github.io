@@ -65,6 +65,38 @@ async function verify() {
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(origin, { waitUntil: "networkidle" });
       await page.evaluate(() => document.fonts.ready);
+      const tapTargets = await page
+        .locator(
+          ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",
+        )
+        .evaluateAll((elements) =>
+          elements.map((element) => ({
+            text: element.textContent.trim(),
+            height: element.getBoundingClientRect().height,
+          })),
+        );
+      assert(
+        tapTargets.every((target) => target.height >= 44),
+        `Small tap target at ${width}: ${JSON.stringify(tapTargets)}`,
+      );
+      if (width <= 420)
+        assert(
+          (await page.locator("#about-me h2").boundingBox()).y < 650,
+          "Mobile intro should not push About below the fold",
+        );
+      assert.equal(
+        await page.locator(".nextmove-preview").getAttribute("src"),
+        "assets/nextmove-dashboard.png",
+      );
+      await page.keyboard.press("Tab");
+      assert.equal(
+        await page
+          .locator(".skip-link")
+          .evaluate((element) => element === document.activeElement),
+        true,
+      );
+      await page.keyboard.press("Enter");
+      assert.equal(new URL(page.url()).hash, "#main");
       assert(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
@@ -167,6 +199,11 @@ async function verify() {
         await page.locator('a[href="assets/resume.pdf"]').count(),
         2,
       );
+      assert(
+        (
+          await page.locator("#experience .experience-row").first().innerText()
+        ).includes("raised its Series A while I was there."),
+      );
       assert.equal(
         await page.locator("#experience h2").innerText(),
         "Earlier experience",
@@ -227,7 +264,22 @@ async function verify() {
             (top < height + 150 || (atEnd && headingBottom <= innerHeight))
           );
         }, target);
+        await page.waitForFunction(
+          (selector) =>
+            document
+              .querySelector(`.navigation a[href="${selector}"]`)
+              .getAttribute("aria-current") === "location",
+          target,
+        );
       }
+      const allWork = page.getByRole("button", { name: /^All work/ });
+      const engineering = page.getByRole("button", { name: /^Engineering/ });
+      await engineering.focus();
+      await page.keyboard.press("Enter");
+      assert.equal(await page.locator(".project-card:visible").count(), 4);
+      await allWork.focus();
+      await page.keyboard.press("Space");
+      assert.equal(await page.locator(".project-card:visible").count(), 6);
       assert.deepEqual(errors, []);
       const result = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -259,6 +311,7 @@ async function verify() {
       "js-calendar",
       "smart-guesser",
       "file-sharing",
+      "nextmove",
     ];
     for (const route of routes) {
       const page = await context.newPage();
@@ -282,10 +335,7 @@ async function verify() {
       );
       assert.equal(await page.locator("h1").count(), 1);
       assert.equal(await page.locator("main").count(), 1);
-      assert.equal(
-        await page.locator('a[href$="#about-me"]').count(),
-        route ? 0 : 1,
-      );
+      assert.equal(await page.locator('a[href$="#about-me"]').count(), 1);
       const broken = await page
         .locator("img")
         .evaluateAll((images) =>
@@ -326,6 +376,28 @@ async function verify() {
       });
       await page.close();
     }
+    const landscape = await browser.newContext({
+      viewport: { width: 667, height: 375 },
+    });
+    const landscapePage = await landscape.newPage();
+    await landscapePage.goto(origin, { waitUntil: "networkidle" });
+    await landscapePage.locator('.navigation a[href="#about-me"]').click();
+    await landscapePage.waitForFunction(() => {
+      const heading = document
+        .querySelector("#about-me h2")
+        .getBoundingClientRect();
+      return (
+        heading.top >=
+          document.querySelector(".site-header").getBoundingClientRect()
+            .height && heading.bottom <= innerHeight
+      );
+    });
+    assert(
+      await landscapePage.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    );
+    await landscape.close();
     const noJS = await browser.newContext({
       javaScriptEnabled: false,
       viewport: { width: 320, height: 844 },
@@ -354,7 +426,7 @@ async function verify() {
       "Accessibility violations: see test-results/accessibility.json",
     );
     console.log(
-      "PASS: 5 responsive widths, 7 pages, 6 projects, removed bio/projects, Meta section, supplied résumé, filters, links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
+      "PASS: responsive/landscape layouts, 8 pages, 6 projects, keyboard controls, tap targets, active navigation, About/history, supplied résumé, links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
     );
   } finally {
     await browser.close();

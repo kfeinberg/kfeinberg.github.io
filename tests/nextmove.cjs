@@ -27,9 +27,13 @@ const server = http.createServer((request, response) => {
     response.writeHead(error ? 404 : 200, {
       "Content-Type": file.endsWith(".css")
         ? "text/css"
-        : file.endsWith(".woff2")
-          ? "font/woff2"
-          : "text/html",
+        : file.endsWith(".js")
+          ? "text/javascript"
+          : file.endsWith(".png")
+            ? "image/png"
+            : file.endsWith(".woff2")
+              ? "font/woff2"
+              : "text/html",
     });
     response.end(error ? "" : bytes);
   });
