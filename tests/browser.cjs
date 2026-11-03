@@ -75,6 +75,20 @@ async function verify() {
         await page.locator(".about-section,.hero-summary").count(),
         0,
       );
+      assert.deepEqual(
+        await page
+          .locator("main > section")
+          .evaluateAll((sections) => sections.map((section) => section.id)),
+        ["intro-page", "about-me", "cs-projects", "experience"],
+      );
+      assert.deepEqual(
+        await page
+          .locator(".navigation .nav-links a")
+          .evaluateAll((links) =>
+            links.map((link) => link.getAttribute("href")),
+          ),
+        ["#about-me", "#cs-projects", "#experience", "#contact"],
+      );
       assert.equal(await page.locator("#about-me.bio-section").count(), 1);
       assert.equal(await page.locator("#about-me h2").innerText(), "About");
       assert.match(
