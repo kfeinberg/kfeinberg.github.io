@@ -210,16 +210,15 @@ async function verify() {
       );
       assert.equal(
         await page.locator("#experience .experience-row").count(),
-        3,
+        2,
       );
       assert.deepEqual(await page.locator("#experience h3").allTextContents(), [
         "Driver Technologies",
-        "J.P. Morgan Chase",
         "Girls Who Code",
       ]);
       assert.deepEqual(
         await page.locator("#experience .experience-date").allTextContents(),
-        ["Jan–Dec 2021", "Jun–Aug 2019", "Jun–Aug 2018"],
+        ["Jan–Dec 2021", "Jun–Aug 2018"],
       );
       assert.equal(await page.locator("#experience .tags").count(), 0);
       assert.equal(
