@@ -8,7 +8,7 @@ A responsive static website served by GitHub Pages from `master`. No build step,
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open <http://127.0.0.1:8765/>. DM Sans is self-hosted; its license is in `assets/fonts/`.
+Open <http://127.0.0.1:8765/>. The visual system uses cobalt blue and orange, oversized DM Sans headings, strong borders, and a two-column project grid that stacks on mobile. DM Sans is self-hosted; its license is in `assets/fonts/`.
 
 ## Checks
 

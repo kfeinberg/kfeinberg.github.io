@@ -65,6 +65,35 @@ async function verify() {
       page.on("pageerror", (error) => errors.push(error.message));
       await page.goto(origin, { waitUntil: "networkidle" });
       await page.evaluate(() => document.fonts.ready);
+      assert.deepEqual(
+        await page.evaluate(() => {
+          const style = getComputedStyle(document.documentElement);
+          return ["--blue", "--orange", "--paper"].map((key) =>
+            style.getPropertyValue(key).trim(),
+          );
+        }),
+        ["#2149e6", "#ff8a42", "#ffffff"],
+      );
+      if (width >= 768)
+        assert.equal(
+          await page
+            .locator(".project-grid")
+            .evaluate(
+              (element) =>
+                getComputedStyle(element).gridTemplateColumns.split(" ").length,
+            ),
+          2,
+        );
+      if (width <= 420)
+        assert.equal(
+          await page
+            .locator(".project-grid")
+            .evaluate(
+              (element) =>
+                getComputedStyle(element).gridTemplateColumns.split(" ").length,
+            ),
+          1,
+        );
       const tapTargets = await page
         .locator(
           ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",
