@@ -1,6 +1,6 @@
 # Personal portfolio
 
-A responsive static website served by GitHub Pages from `master`. No build step, framework, or runtime dependency is required. Project pages keep their original URLs, and `CNAME` retains the custom domain.
+A responsive static website served by GitHub Pages from `master`. No build step, framework, or runtime dependency is required. `CNAME` retains the custom domain.
 
 ## Local preview
 
@@ -8,7 +8,7 @@ A responsive static website served by GitHub Pages from `master`. No build step,
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open <http://127.0.0.1:8765/>. The site uses self-hosted DM Sans and Instrument Serif fonts; their original license files are in `assets/fonts/`.
+Open <http://127.0.0.1:8765/>. DM Sans is self-hosted; its license is in `assets/fonts/`.
 
 ## Checks
 
@@ -21,12 +21,14 @@ npm test
 npm run format:check
 ```
 
-The browser check starts its own loopback-only server, checks the homepage at 320, 390, 768, 1024, and 1440 pixels, tests filters and sticky navigation, checks all project pages for broken local links and images, and runs automated WCAG A/AA scans. It also checks the no-JavaScript fallback and reduced-motion setting. Screenshots and the accessibility report go to the ignored `test-results/` directory. Automated scans supplement, not replace, human accessibility review.
+The tests start a loopback-only server and check five viewport widths, all seven HTML pages, navigation, filters, local links/images, the supplied résumé, the Meta section, and the removal of the bio and retired project links. They also verify the Pulse App Store link and that NextMove has no outbound app link. Automated WCAG A/AA scans, no-JavaScript fallback, and reduced motion are checked. Evidence is written to the ignored `test-results/` directory. Automated scans do not replace human accessibility review.
 
 ## Content
 
-This UI refresh preserves the original project archive and early experience. Student-era biography claims are not presented as current employment. The old résumé is explicitly labeled as archived; LinkedIn is the route to current background and contact. The original calendar demo is retained as a clearly labeled historical link, and its availability is not guaranteed.
+The old biography is replaced with the owner’s supplied details: Brooklyn, public transit and urbanism, ultimate frisbee/padel/volleyball, and enjoying building things. The homepage lists six projects, led by Pulse and NextMove. Pulse uses its public App Store listing and icon. NextMove is described as a vibe-coded personal tool; no private data, screenshots, or app URL are exposed. Chatroom, calendar, and PHP file sharing are removed from project navigation; their old detail URLs remain available for compatibility.
 
-The homepage keeps the legacy `intro-page`, `about-me`, `experience`, and `cs-projects` anchors. Project filters are progressively enhanced: all work remains visible if JavaScript is unavailable. Previous `cs-projects/style2.css` and `style3.css` files remain available for compatibility but are no longer loaded by the refreshed pages.
+The Meta section summarizes Applied AI, privacy infrastructure, and VR work. Role history and earlier accomplishments are grounded in the owner-supplied résumé; recent Applied AI focus areas are informed by work history. Internal task/diff identifiers, implementation details, and internal operational metrics are not included in the webpage. The résumé is the PDF supplied by the owner, unchanged.
 
-Preview changes in a pull request before merging: updates to `master` publish the live website.
+The `intro-page`, `about-me`, `experience`, and `cs-projects` anchors are retained. The About section contains only the newly supplied biography. All six projects remain visible without JavaScript. Previous `cs-projects/style2.css` and `style3.css` files remain available but are not loaded by the refreshed pages.
+
+Updates to `master` publish the live site. Review the branch before merging.

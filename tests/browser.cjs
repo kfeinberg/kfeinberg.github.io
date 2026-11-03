@@ -3,8 +3,8 @@ const AxeBuilder = require("@axe-core/playwright").default;
 const fs = require("node:fs");
 const path = require("node:path");
 const http = require("node:http");
+const crypto = require("node:crypto");
 const assert = require("node:assert/strict");
-
 const root = path.resolve(__dirname, "..");
 const output = path.join(root, "test-results");
 const types = {
@@ -42,9 +42,16 @@ const server = http.createServer((request, response) => {
     response.end(bytes);
   });
 });
-
 async function verify() {
   fs.mkdirSync(output, { recursive: true });
+  assert.equal(
+    crypto
+      .createHash("sha256")
+      .update(fs.readFileSync(path.join(root, "assets/resume.pdf")))
+      .digest("hex"),
+    "2de32fb1bbefcabb93bcab9b1970df039fbe8a247e0bc1a0b02f286aa10e910f",
+    "Résumé must match the supplied PDF",
+  );
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   const origin = `http://127.0.0.1:${server.address().port}`;
   const browser = await chromium.launch();
@@ -64,8 +71,60 @@ async function verify() {
         ),
         `Homepage overflow at ${width}`,
       );
+      assert.equal(
+        await page.locator(".about-section,.hero-summary").count(),
+        0,
+      );
+      assert.equal(await page.locator("#about-me.bio-section").count(), 1);
+      assert.equal(
+        await page.locator("#about-me p").innerText(),
+        "I’m based in Brooklyn and interested in public transit and urbanism. I play ultimate frisbee, padel, and volleyball, and I love building things.",
+      );
+      assert.equal(await page.locator('a[href$="#about-me"]').count(), 0);
+      assert.equal(await page.locator(".project-card").count(), 6);
+      assert.equal(
+        await page
+          .locator(
+            'a[href="cs-projects/chat-room.html"],a[href="cs-projects/js-calendar.html"],a[href="cs-projects/file-sharing.html"]',
+          )
+          .count(),
+        0,
+      );
+      assert.equal(
+        await page.locator(".project-card").first().locator("h3").innerText(),
+        "Pulse",
+      );
+      assert.equal(
+        await page
+          .locator(".project-card")
+          .first()
+          .locator("a")
+          .getAttribute("href"),
+        "https://apps.apple.com/us/app/pulse-map-nyc-event-discover/id6760617130",
+      );
+      assert.equal(
+        await page.locator(".project-card").nth(1).locator("h3").innerText(),
+        "NextMove",
+      );
+      assert.equal(
+        await page.locator(".project-card").nth(1).locator("a").count(),
+        0,
+      );
+      assert.equal(
+        await page.locator('a[href="assets/resume.pdf"]').count(),
+        2,
+      );
+      assert.equal(await page.locator("#experience h2").innerText(), "At Meta");
+      assert.equal(
+        await page.locator("#experience .experience-row").count(),
+        3,
+      );
+      assert.equal(
+        (await page.locator(".hero .eyebrow").textContent()).trim(),
+        "Engineering & building",
+      );
       for (const [filter, expected] of [
-        ["Code", 4],
+        ["Engineering", 4],
         ["Design & writing", 2],
         ["All work", 6],
       ]) {
@@ -83,7 +142,7 @@ async function verify() {
           `${expected} projects`,
         );
       }
-      for (const target of ["#cs-projects", "#about-me", "#experience"]) {
+      for (const target of ["#cs-projects", "#experience"]) {
         await page.locator(`.nav-links a[href="${target}"]`).click();
         await page.waitForFunction((selector) => {
           const top = document
@@ -101,6 +160,14 @@ async function verify() {
         .analyze();
       report.push({ page: "home", width, violations: result.violations });
       await page.goto(origin, { waitUntil: "networkidle" });
+      await page.locator("img").evaluateAll((images) =>
+        images.forEach((image) => {
+          image.loading = "eager";
+        }),
+      );
+      await page.waitForFunction(() =>
+        [...document.images].every((image) => image.complete),
+      );
       if (width === 1440 || width === 390) {
         await page.screenshot({
           path: path.join(output, `home-${width}.png`),
@@ -141,6 +208,7 @@ async function verify() {
       );
       assert.equal(await page.locator("h1").count(), 1);
       assert.equal(await page.locator("main").count(), 1);
+      assert.equal(await page.locator('a[href$="#about-me"]').count(), 0);
       const broken = await page
         .locator("img")
         .evaluateAll((images) =>
@@ -165,12 +233,11 @@ async function verify() {
         if (
           url.hash &&
           response.headers()["content-type"]?.includes("text/html")
-        ) {
+        )
           assert(
             (await response.text()).includes(`id="${url.hash.slice(1)}"`),
             `Missing fragment ${url}`,
           );
-        }
       }
       const result = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -210,7 +277,7 @@ async function verify() {
       "Accessibility violations: see test-results/accessibility.json",
     );
     console.log(
-      "PASS: 5 responsive widths, 7 pages, filters, anchors, local links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
+      "PASS: 5 responsive widths, 7 pages, 6 projects, removed bio/projects, Meta section, supplied résumé, filters, links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
     );
   } finally {
     await browser.close();
