@@ -299,6 +299,14 @@ h2 {
 .bio-copy .professional-bio {
   color: var(--ink);
 }
+.professional-bio a {
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+.professional-bio a:hover {
+  text-decoration-color: currentColor;
+}
 .bio-copy p + p {
   margin-top: 15px;
 }

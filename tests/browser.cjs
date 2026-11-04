@@ -232,13 +232,34 @@ async function verify() {
         await page.locator("#about-me .professional-bio").innerText(),
         /software engineer at Meta.*Applied AI.*privacy infrastructure.*VR/s,
       );
-      assert(
-        (
-          await page.locator("#about-me .professional-bio").innerText()
-        ).includes(
-          "Previously, I worked on privacy infrastructure and VR systems.",
-        ),
+      assert.equal(
+        await page.locator("#about-me .professional-bio").innerText(),
+        "I’m a software engineer at Meta, working on Applied AI. Previously, I worked on privacy infrastructure and VR system software.",
       );
+      const references = await page
+        .locator(".professional-bio a")
+        .evaluateAll((links) =>
+          links.map((link) => ({
+            text: link.textContent,
+            href: link.getAttribute("href"),
+            target: link.target,
+            rel: link.rel,
+          })),
+        );
+      assert.deepEqual(references, [
+        {
+          text: "privacy infrastructure",
+          href: "https://engineering.fb.com/2025/07/23/security/policy-zones-meta-purpose-limitation-batch-processing-systems/",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        {
+          text: "VR system software",
+          href: "https://www.reddit.com/r/oculus/comments/87grwu/what_is_vr_shell_exactly/",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+      ]);
       assert.equal(
         await page.locator("#about-me .media-intro").innerText(),
         "I’m Gen Z, so naturally I track all the media I consume. You can see what I’ve been reading and watching here:",
