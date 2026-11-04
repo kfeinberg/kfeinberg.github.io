@@ -248,6 +248,12 @@ async function verify() {
         );
       assert.deepEqual(references, [
         {
+          text: "Applied AI",
+          href: "https://www.businessinsider.com/meta-ai-new-applied-engineering-team-2026-3",
+          target: "_blank",
+          rel: "noopener noreferrer",
+        },
+        {
           text: "privacy infrastructure",
           href: "https://engineering.fb.com/2025/07/23/security/policy-zones-meta-purpose-limitation-batch-processing-systems/",
           target: "_blank",
@@ -262,11 +268,11 @@ async function verify() {
       ]);
       assert.equal(
         await page.locator("#about-me .media-intro").innerText(),
-        "I’m Gen Z, so naturally I track all the media I consume. You can see what I’ve been reading and watching here:",
+        "I’m Gen Z, so I must track all of the media that I consume. You can see what I’ve been reading and watching here:",
       );
       assert.equal(
         await page.locator("#about-me .personal-bio").innerText(),
-        "I’m based in Brooklyn and interested in public transit and urbanism. I play ultimate frisbee, padel, and volleyball, and I love building things.",
+        "I’m based in Brooklyn and interested in how cities work, especially public transit. Outside of work, I play ultimate frisbee, padel, and volleyball, and build things for myself.",
       );
       assert.equal(
         await page.locator('.nav-links a[href="#about-me"]').count(),
@@ -338,10 +344,24 @@ async function verify() {
         await page.locator("#experience .experience-row").count(),
         2,
       );
-      assert.deepEqual(await page.locator("#experience h3").allTextContents(), [
-        "Driver Technologies",
-        "Girls Who Code",
-      ]);
+      assert.equal(
+        await page.locator("#experience h3 a").getAttribute("href"),
+        "https://drivertechnologies.com/",
+      );
+      assert.equal(
+        await page.locator("#experience h3 a").getAttribute("target"),
+        "_blank",
+      );
+      assert.equal(
+        await page.locator("#experience h3 a").getAttribute("rel"),
+        "noopener noreferrer",
+      );
+      assert.deepEqual(
+        (await page.locator("#experience h3").allTextContents()).map((text) =>
+          text.trim(),
+        ),
+        ["Driver Technologies", "Girls Who Code"],
+      );
       assert.deepEqual(
         await page.locator("#experience .experience-date").allTextContents(),
         ["Jan–Dec 2021", "Jun–Aug 2018"],
