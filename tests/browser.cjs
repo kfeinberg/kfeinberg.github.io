@@ -74,26 +74,39 @@ async function verify() {
         }),
         ["#2149e6", "#ff8a42", "#ffffff"],
       );
-      if (width >= 768)
-        assert.equal(
+      assert.equal(
+        await page
+          .locator(".project-grid")
+          .evaluate(
+            (element) =>
+              getComputedStyle(element).gridTemplateColumns.split(" ").length,
+          ),
+        1,
+      );
+      assert(
+        parseFloat(
           await page
-            .locator(".project-grid")
-            .evaluate(
-              (element) =>
-                getComputedStyle(element).gridTemplateColumns.split(" ").length,
-            ),
-          2,
-        );
-      if (width <= 420)
-        assert.equal(
-          await page
-            .locator(".project-grid")
-            .evaluate(
-              (element) =>
-                getComputedStyle(element).gridTemplateColumns.split(" ").length,
-            ),
-          1,
-        );
+            .locator(".hero h1")
+            .evaluate((element) => getComputedStyle(element).fontSize),
+        ) <= 48,
+      );
+      assert.deepEqual(
+        await page
+          .locator(".hero-portrait, .project-card, .button")
+          .evaluateAll((elements) =>
+            elements.map((element) => getComputedStyle(element).boxShadow),
+          ),
+        await page
+          .locator(".hero-portrait, .project-card, .button")
+          .evaluateAll((elements) => elements.map(() => "none")),
+      );
+      assert.equal(
+        await page
+          .locator(".wordmark")
+          .first()
+          .evaluate((element) => getComputedStyle(element).backgroundColor),
+        "rgba(0, 0, 0, 0)",
+      );
       const tapTargets = await page
         .locator(
           ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",
