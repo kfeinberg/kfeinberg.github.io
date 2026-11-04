@@ -72,7 +72,7 @@ async function verify() {
             style.getPropertyValue(key).trim(),
           );
         }),
-        ["#2149e6", "#ff8a42", "#ffffff"],
+        ["#2149e6", "#ff8a42", "#faf9f5"],
       );
       assert.equal(
         await page
@@ -122,6 +122,23 @@ async function verify() {
           .evaluate((element) => getComputedStyle(element).backgroundColor),
         "rgba(0, 0, 0, 0)",
       );
+      assert.equal(await page.locator(".site-header .wordmark").count(), 0);
+      assert.equal(await page.locator("#intro-page .button").count(), 0);
+      assert(
+        (
+          await page
+            .locator(".hero h1")
+            .evaluate((element) => getComputedStyle(element).fontFamily)
+        ).includes("Newsreader"),
+      );
+      assert(
+        (
+          await page
+            .locator(".professional-bio")
+            .evaluate((element) => getComputedStyle(element).fontFamily)
+        ).includes("Newsreader"),
+      );
+      assert.equal(await page.locator(".profile-links a").count(), 2);
       const tapTargets = await page
         .locator(
           ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",

@@ -1,4 +1,18 @@
 @font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-latin-400-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("assets/fonts/newsreader-latin-500-normal.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
   font-family: "DM Sans";
   src: url("assets/fonts/dm-sans-latin-400-normal.woff2") format("woff2");
   font-style: normal;
@@ -1040,6 +1054,250 @@ html.opening-snap {
   }
   .opening .bio-copy {
     margin-top: 22px;
+  }
+}
+/* A personal reading page, rather than a résumé-style product landing page. */
+:root {
+  --paper: #faf9f5;
+  --ink: #2b2d2b;
+  --muted: #666860;
+  --line: #deded5;
+  --reading-font: "Newsreader", Georgia, serif;
+}
+.navigation {
+  justify-content: flex-start;
+  min-height: 64px;
+}
+.site-header {
+  border-bottom: 0;
+}
+.nav-links {
+  gap: 25px;
+  font-size: 12px;
+}
+.nav-links a {
+  padding-inline: 0;
+}
+.hero h1,
+h2,
+h3,
+.project-page h1 {
+  font-family: var(--reading-font);
+  font-weight: 400;
+  letter-spacing: -0.028em;
+}
+.hero h1 {
+  font-size: clamp(44px, 5.4vw, 64px);
+}
+.opening-heading {
+  align-items: center;
+}
+.hero .eyebrow {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.hero-portrait {
+  width: 92px;
+}
+.hero-portrait img {
+  border-radius: 2px;
+}
+.bio-copy p {
+  font-family: var(--reading-font);
+  font-size: 21px;
+  line-height: 1.48;
+  color: var(--ink);
+}
+.bio-copy p + p {
+  margin-top: 18px;
+}
+.bio-copy .media-intro {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.profile-links {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  gap: 25px;
+}
+.profile-links .text-link,
+.personal-links .text-link {
+  border-bottom: 0;
+  font-size: 13px;
+}
+.text-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.personal-links {
+  margin-top: 3px;
+}
+.scroll-cue {
+  font-family: var(--reading-font);
+  font-size: 15px;
+}
+.work-section {
+  border-top: 1px solid var(--line);
+  padding-top: 42px;
+}
+.work-section h2 {
+  font-size: 34px;
+}
+.section-intro {
+  font-size: 12px;
+}
+.work-toolbar {
+  margin-bottom: 13px;
+}
+.project-count {
+  font-size: 10px;
+}
+.filter-button {
+  font-size: 11px;
+}
+.project-grid {
+  row-gap: 10px;
+}
+.project-card {
+  border-bottom: 0;
+}
+.project-link {
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 30px;
+  padding-block: 22px;
+  align-items: start;
+}
+.project-visual {
+  background: transparent;
+  padding: 6px;
+  height: 122px;
+}
+.project-info h3 {
+  font-size: 27px;
+}
+.project-category {
+  font-size: 10px;
+  color: var(--muted);
+}
+.project-info > p:not(.project-category) {
+  font-family: var(--reading-font);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.project-info .tags {
+  display: none;
+}
+.experience-section h2 {
+  font-size: 30px;
+}
+.experience-detail h3 {
+  font-size: 24px;
+}
+.experience-detail > p {
+  font-family: var(--reading-font);
+  font-size: 17px;
+  line-height: 1.5;
+}
+.experience-detail .experience-role {
+  font-family: var(--sans);
+  font-size: 12px;
+}
+.experience-date {
+  font-size: 11px;
+}
+.contact-top h2 {
+  font-family: var(--reading-font);
+  font-size: 28px;
+}
+.contact-section {
+  border-top: 1px solid var(--line);
+}
+.footer-bottom {
+  border-top: 0;
+  padding-top: 0;
+}
+.footer-bottom .wordmark {
+  font-family: var(--reading-font);
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.project-body p,
+.workflow-steps {
+  font-family: var(--reading-font);
+  font-size: 20px;
+  line-height: 1.6;
+}
+.project-body h2 {
+  font-family: var(--reading-font);
+  font-size: 30px;
+}
+@media (max-width: 600px) {
+  .navigation {
+    min-height: 58px;
+  }
+  .hero h1 {
+    font-size: 42px;
+  }
+  .hero .eyebrow {
+    font-size: 11px;
+  }
+  .opening-heading {
+    grid-template-columns: minmax(0, 1fr) 64px;
+  }
+  .hero-portrait {
+    width: 64px;
+  }
+  .bio-copy p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .bio-copy .media-intro {
+    font-size: 16px;
+  }
+  .profile-links {
+    gap: 24px;
+    margin-top: 10px;
+  }
+  .project-link {
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .project-visual {
+    height: 90px;
+    padding: 0;
+  }
+  .project-info h3 {
+    font-size: 25px;
+  }
+  .project-info > p:not(.project-category) {
+    font-size: 18px;
+  }
+  .project-category {
+    font-size: 10px;
+  }
+  .work-section h2 {
+    font-size: 31px;
+  }
+  .project-body p {
+    font-size: 19px;
+  }
+}
+@media (max-width: 420px) {
+  :root {
+    --header-height: 62px;
+  }
+  .navigation {
+    display: flex;
+    padding-top: 0;
+  }
+  .navigation .nav-links {
+    font-size: 12px;
+    gap: 15px;
+  }
+  .navigation .nav-links a {
+    padding-inline: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
