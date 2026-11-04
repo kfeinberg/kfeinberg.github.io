@@ -515,6 +515,11 @@ h3 {
 .experience-detail h3 {
   font-size: 18px;
 }
+.experience-detail h3 a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
 .experience-role {
   font-size: 12px;
   color: var(--muted);

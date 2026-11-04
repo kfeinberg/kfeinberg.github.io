@@ -268,7 +268,7 @@ async function verify() {
       ]);
       assert.equal(
         await page.locator("#about-me .media-intro").innerText(),
-        "I’m Gen Z, so I must track all of the media that I consume. You can see what I’ve been reading and watching here:",
+        "I’m Gen Z, so I have to track all of the media that I consume. You can see what I’ve been reading and watching here:",
       );
       assert.equal(
         await page.locator("#about-me .personal-bio").innerText(),
@@ -343,6 +343,13 @@ async function verify() {
       assert.equal(
         await page.locator("#experience .experience-row").count(),
         2,
+      );
+      assert(
+        (
+          await page
+            .locator("#experience h3 a")
+            .evaluate((link) => getComputedStyle(link).textDecorationLine)
+        ).includes("underline"),
       );
       assert.equal(
         await page.locator("#experience h3 a").getAttribute("href"),
