@@ -136,6 +136,27 @@ async function verify() {
         tapTargets.every((target) => target.height >= 44),
         `Small tap target at ${width}: ${JSON.stringify(tapTargets)}`,
       );
+      const opening = await page.locator("#intro-page").boundingBox();
+      const projectsTop = (await page.locator("#cs-projects").boundingBox()).y;
+      assert(
+        opening.y + opening.height >= 998,
+        "Intro must fill at least the viewport",
+      );
+      assert(
+        projectsTop >= 998,
+        "Projects must start below the initial screen",
+      );
+      assert(
+        ["y", "y proximity"].includes(
+          await page.evaluate(
+            () => getComputedStyle(document.documentElement).scrollSnapType,
+          ),
+        ),
+      );
+      assert.equal(
+        await page.locator(".scroll-cue").getAttribute("href"),
+        "#cs-projects",
+      );
       if (width <= 420)
         assert(
           (await page.locator("#about-me .professional-bio").boundingBox()).y <
@@ -314,9 +335,10 @@ async function verify() {
       for (const target of ["#cs-projects", "#about-me", "#experience"]) {
         await page.locator(`.nav-links a[href="${target}"]`).click();
         await page.waitForFunction((selector) => {
-          const top = document
-            .querySelector(selector)
-            .getBoundingClientRect().top;
+          const element = document.querySelector(selector);
+          const top = (
+            element.closest("section") ?? element
+          ).getBoundingClientRect().top;
           const height = document
             .querySelector(".site-header")
             .getBoundingClientRect().height;
@@ -464,6 +486,32 @@ async function verify() {
       ),
     );
     await landscape.close();
+    const scrolling = await context.newPage();
+    await scrolling.setViewportSize({ width: 1440, height: 900 });
+    await scrolling.goto(origin, { waitUntil: "networkidle" });
+    await scrolling.mouse.move(1000, 650);
+    await scrolling.mouse.wheel(0, 900);
+    await scrolling.waitForFunction(() => scrollY > 300);
+    await scrolling.waitForTimeout(900);
+    const projectPosition = await scrolling
+      .locator("#cs-projects")
+      .boundingBox();
+    assert(projectPosition.y < 250, "Wheel scrolling must reach Projects");
+    await scrolling.mouse.wheel(0, 900);
+    await scrolling.waitForFunction(() => scrollY > 1100);
+    await scrolling.keyboard.press("End");
+    await scrolling.waitForFunction(
+      () =>
+        document.querySelector("#contact").getBoundingClientRect().bottom <=
+        innerHeight + 2,
+    );
+    await scrolling.keyboard.press("Home");
+    await scrolling.waitForFunction(() => scrollY <= 2);
+    await scrolling.locator(".scroll-cue").click();
+    await scrolling.waitForFunction(
+      () => location.hash === "#cs-projects" && scrollY > 300,
+    );
+    await scrolling.close();
     const noJS = await browser.newContext({
       javaScriptEnabled: false,
       viewport: { width: 320, height: 844 },
@@ -481,6 +529,12 @@ async function verify() {
         () => getComputedStyle(document.documentElement).scrollBehavior,
       ),
       "auto",
+    );
+    assert.equal(
+      await motion.evaluate(
+        () => getComputedStyle(document.documentElement).scrollSnapType,
+      ),
+      "none",
     );
     await reduced.close();
     fs.writeFileSync(

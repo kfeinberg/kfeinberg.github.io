@@ -30,7 +30,9 @@ const sectionLinks = [
 const sections = sectionLinks
   .map((link) => ({
     link,
-    section: document.getElementById(link.hash.slice(1)),
+    section:
+      document.getElementById(link.hash.slice(1))?.closest("section") ??
+      document.getElementById(link.hash.slice(1)),
   }))
   .filter((item) => item.section);
 let frame = 0;
@@ -68,11 +70,17 @@ function queueNavigation() {
   if (!frame) frame = requestAnimationFrame(updateNavigation);
 }
 function updateHeaderOffset() {
-  if (header)
+  if (header) {
+    const height = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty(
+      "--header-height",
+      `${height}px`,
+    );
     document.documentElement.style.setProperty(
       "--header-offset",
-      `${Math.ceil(header.getBoundingClientRect().height) + 24}px`,
+      `${height + 24}px`,
     );
+  }
   queueNavigation();
 }
 if (header) {
