@@ -1,0 +1,14 @@
+{
+  "name": "kalissa-personal-website",
+  "private": true,
+  "scripts": {
+    "serve": "python3 -m http.server 8765 --bind 127.0.0.1",
+    "test": "node tests/browser.cjs && node tests/nextmove.cjs",
+    "format:check": "prettier --check index.html style.css site.js cs-projects/*.html tests/*.cjs package.json README.md"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.0",
+    "@playwright/test": "1.64.1",
+    "prettier": "3.6.2"
+  }
+}

@@ -1,55 +1,96 @@
 <!doctype html>
-<html>
-    <head>
-        <title>Kalissa Feinberg</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.typekit.net/fwo1rup.css">
-        <link rel="stylesheet" type="text/css" href="style2.css">
-    </head>
-
-    <body>
-
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"> 
-                        <a class = "nav" href="https://kalissafeinberg.com">home</a> 
-                    </li>
-                    <li class="nav-item"> 
-                        <a class = "nav" href = "https://kalissafeinberg.com/#about-me">about</a> 
-                    </li>
-                    <li class="nav-item"> 
-                        <a class = "nav" href="https://kalissafeinberg.com/#intro-page">resume</a> 
-                    </li>
-                    <li class="nav-item"> 
-                        <a class = "nav" href = "https://kalissafeinberg.com/#cs-projects">projects</a> 
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class = "content">
-
-            <h1>JavaScript Calendar</h1>
-            <h2 class = "project-date">Monday October 22, 2018</h2>
-            <h2 class = "project-technology-section"> 
-                <span class = project-technology>Javascript</span>    
-                <span class = project-technology>PHP</span>
-                <span class = project-technology>AJAX</span>
-                <span class = project-technology>AWS</span>
-                <span class = project-technology>JQuery</span>
-                <span class = project-technology>Bootstrap</span>
-            </h2>
-            <img src="../assets/calendar.png" class = "project-pic">
-            <span class = "project-description">
-                This is another project that I co-created in my Rapid Prototype Development and Creative Programming course. We created this calendar with an HTML template that we found online, Bootstrap for styling, PHP for web security things, and vanilla JavaScript for the functionality. 
-                This calendar has functionality to add an event with a title, date and time, edit and delete an already-created event, share events with other users, and filter your calendar view by seeing high-priority events only.
-                All requests are handled by AJAX, so the calendar works on a single page and does not require any refreshes to see updates in the calendar. Passwords that are stored in the database are salted and hashed for a layer of security. This website is protected against SQL Injection, CSRF attacks, and XSS attacks.
-            </span>
-            <a href = "http://ec2-18-220-119-176.us-east-2.compute.amazonaws.com/~kfeinberg/module5/calendar.html">Link to login page.</a>
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="JavaScript Calendar — a collaborative calendar project by Kalissa Feinberg."
+    />
+    <title>JavaScript Calendar — Kalissa Feinberg</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <script src="../site.js" defer></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="navigation shell" aria-label="Main navigation">
+        <a
+          class="wordmark"
+          href="../index.html"
+          aria-label="Kalissa Feinberg, home"
+          >kf<span aria-hidden="true">.</span></a
+        >
+        <div class="nav-links">
+          <a href="../index.html#about-me">About</a>
+          <a href="../index.html#cs-projects">Projects</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#contact">Contact ↗</a>
         </div>
-
-    </body>
+      </nav>
+    </header>
+    <main class="project-page shell" id="main">
+      <a class="back-link" href="../index.html#cs-projects"
+        >← Back to selected work</a
+      >
+      <p class="eyebrow">Project archive / Web application</p>
+      <h1>JavaScript Calendar<span class="name-period">.</span></h1>
+      <div class="project-meta">
+        <p class="project-date">
+          <time datetime="2018-10-22">October 22, 2018</time>
+        </p>
+        <ul class="tags" aria-label="Technologies">
+          <li>JavaScript</li>
+          <li>PHP</li>
+          <li>AJAX</li>
+          <li>AWS</li>
+          <li>jQuery</li>
+          <li>Bootstrap</li>
+        </ul>
+      </div>
+      <figure class="project-cover">
+        <img
+          src="../assets/calendar.png"
+          alt="Monthly calendar with event creation and sharing controls"
+        />
+      </figure>
+      <div class="project-body">
+        <h2>Overview</h2>
+        <p>
+          I co-created this project in my Rapid Prototype Development and
+          Creative Programming course, using an existing HTML template,
+          Bootstrap for styling, PHP for security and database interaction, and
+          vanilla JavaScript for functionality.
+        </p>
+        <p>
+          The calendar supports adding an event with a title, date, and time;
+          editing and deleting events; sharing events with other users; and
+          filtering to show only high-priority events.
+        </p>
+        <p>
+          AJAX handles requests so updates appear without page refreshes. The
+          original project used salted and hashed passwords and included
+          protections against SQL injection, CSRF, and XSS.
+        </p>
+        <p>
+          This is an archived student project, not a currently maintained
+          calendar service.
+        </p>
+        <a
+          class="text-link"
+          href="http://ec2-18-220-119-176.us-east-2.compute.amazonaws.com/~kfeinberg/module5/calendar.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Original demo (may no longer be available)
+          <span aria-hidden="true">↗</span
+          ><span class="sr-only"> (opens in a new tab)</span></a
+        >
+      </div>
+      <nav class="project-pagination" aria-label="More projects">
+        <a href="../index.html#cs-projects">← All projects</a
+        ><a href="smart-guesser.html">Next: Mastermind →</a>
+      </nav>
+    </main>
+  </body>
 </html>
