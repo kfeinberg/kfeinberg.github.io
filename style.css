@@ -1048,9 +1048,7 @@ html.opening-snap {
   scroll-snap-stop: always;
 }
 .opening-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 96px;
-  gap: 28px;
+  display: block;
   align-items: start;
 }
 .opening .bio-copy {

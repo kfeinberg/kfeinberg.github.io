@@ -224,7 +224,7 @@ async function verify() {
       );
       assert.equal(
         await page.locator("#about-me .hero-portrait img").count(),
-        1,
+        0,
       );
       assert.equal(await page.locator("#about-me h2").count(), 0);
       assert.equal(await page.locator("#intro-page .bio-copy").count(), 1);
