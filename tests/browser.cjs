@@ -311,6 +311,14 @@ async function verify() {
           .getAttribute("href"),
         "cs-projects/nextmove.html",
       );
+      assert.equal(
+        await page
+          .locator(".project-card")
+          .nth(1)
+          .locator(".project-info > p:not(.project-category)")
+          .innerText(),
+        "A dashboard I built to turn daily email updates into organized information and next steps.",
+      );
       for (const [label, url] of [
         ["Goodreads", "https://www.goodreads.com/user/show/2754883-kalli"],
         ["Letterboxd", "https://letterboxd.com/kalissaa/"],
@@ -368,9 +376,10 @@ async function verify() {
       assert.equal(await gwc.getAttribute("href"), "https://girlswhocode.com/");
       assert.equal(await gwc.getAttribute("target"), "_blank");
       assert.equal(await gwc.getAttribute("rel"), "noopener noreferrer");
+      await page.mouse.move(0, 0);
       assert(
         await page
-          .locator("a:not(.project-link)")
+          .locator(".professional-bio a, .experience-detail h3 a")
           .evaluateAll((links) =>
             links.every((link) =>
               getComputedStyle(link).textDecorationLine.includes("underline"),
@@ -379,15 +388,60 @@ async function verify() {
       );
       assert(
         await page
-          .locator("a.project-link h3")
-          .evaluateAll((headings) =>
-            headings.every((heading) =>
-              getComputedStyle(heading).textDecorationLine.includes(
-                "underline",
-              ),
+          .locator(
+            ".nav-links a, .profile-links a, .personal-links a, .footer-bottom a, .scroll-cue, .contact-top a, .project-link h3",
+          )
+          .evaluateAll((elements) =>
+            elements.every(
+              (element) =>
+                !getComputedStyle(element).textDecorationLine.includes(
+                  "underline",
+                ),
             ),
           ),
       );
+      if (width === 1440) {
+        const links = page.locator("a:not(.project-link):visible");
+        for (let i = 0; i < (await links.count()); i++) {
+          const link = links.nth(i);
+          if (
+            await link.evaluate((element) =>
+              element.classList.contains("skip-link"),
+            )
+          )
+            continue;
+          await link.hover();
+          assert(
+            (
+              await link.evaluate(
+                (element) => getComputedStyle(element).textDecorationLine,
+              )
+            ).includes("underline"),
+            `Missing hover underline: ${await link.innerText()}`,
+          );
+        }
+        const projects = page.locator("a.project-link:visible");
+        for (let i = 0; i < (await projects.count()); i++) {
+          const link = projects.nth(i);
+          await link.hover();
+          assert(
+            (
+              await link
+                .locator("h3")
+                .evaluate(
+                  (element) => getComputedStyle(element).textDecorationLine,
+                )
+            ).includes("underline"),
+          );
+          assert.equal(
+            await link.evaluate(
+              (element) => getComputedStyle(element).textDecorationLine,
+            ),
+            "none",
+          );
+        }
+        await page.mouse.move(0, 0);
+      }
       assert.deepEqual(
         (await page.locator("#experience h3").allTextContents()).map((text) =>
           text.trim(),

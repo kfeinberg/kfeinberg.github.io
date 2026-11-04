@@ -65,20 +65,24 @@ body {
 }
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
-a.project-link {
-  text-decoration: none;
-}
 a.project-link h3 {
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 a:hover {
   color: var(--blue);
+  text-decoration: underline;
+}
+a.project-link:hover {
+  text-decoration: none;
+}
+a.project-link:hover h3 {
+  text-decoration: underline;
 }
 button {
   font: inherit;
@@ -246,12 +250,12 @@ h1 {
   line-height: 1.5;
   padding: 8px 0;
   border: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
   background: transparent;
   color: var(--blue);
 }
 .button:hover {
-  border-bottom-color: var(--blue);
+  text-decoration: underline;
 }
 .button span[aria-hidden] {
   font-size: 16px;
@@ -262,11 +266,11 @@ h1 {
   min-height: 44px;
   font-size: 13px;
   color: var(--muted);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0;
   padding-block: 8px;
 }
 .text-link:hover {
-  border-bottom-color: var(--blue);
+  text-decoration: underline;
 }
 .text-link span[aria-hidden] {
   margin-left: 9px;
