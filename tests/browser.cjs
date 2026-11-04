@@ -348,20 +348,45 @@ async function verify() {
         (
           await page
             .locator("#experience h3 a")
+            .first()
             .evaluate((link) => getComputedStyle(link).textDecorationLine)
         ).includes("underline"),
       );
       assert.equal(
-        await page.locator("#experience h3 a").getAttribute("href"),
+        await page.locator("#experience h3 a").first().getAttribute("href"),
         "https://drivertechnologies.com/",
       );
       assert.equal(
-        await page.locator("#experience h3 a").getAttribute("target"),
+        await page.locator("#experience h3 a").first().getAttribute("target"),
         "_blank",
       );
       assert.equal(
-        await page.locator("#experience h3 a").getAttribute("rel"),
+        await page.locator("#experience h3 a").first().getAttribute("rel"),
         "noopener noreferrer",
+      );
+      const gwc = page.locator("#experience h3 a").nth(1);
+      assert.equal(await gwc.getAttribute("href"), "https://girlswhocode.com/");
+      assert.equal(await gwc.getAttribute("target"), "_blank");
+      assert.equal(await gwc.getAttribute("rel"), "noopener noreferrer");
+      assert(
+        await page
+          .locator("a:not(.project-link)")
+          .evaluateAll((links) =>
+            links.every((link) =>
+              getComputedStyle(link).textDecorationLine.includes("underline"),
+            ),
+          ),
+      );
+      assert(
+        await page
+          .locator("a.project-link h3")
+          .evaluateAll((headings) =>
+            headings.every((heading) =>
+              getComputedStyle(heading).textDecorationLine.includes(
+                "underline",
+              ),
+            ),
+          ),
       );
       assert.deepEqual(
         (await page.locator("#experience h3").allTextContents()).map((text) =>

@@ -65,7 +65,17 @@ body {
 }
 a {
   color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+a.project-link {
   text-decoration: none;
+}
+a.project-link h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 a:hover {
   color: var(--blue);
