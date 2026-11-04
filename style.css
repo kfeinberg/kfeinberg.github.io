@@ -982,6 +982,32 @@ h3 {
     font-size: 16px;
   }
 }
+/* One opening area: name and portrait above the biography, without a divider. */
+.hero.opening {
+  display: block;
+  padding-block: 46px 38px;
+}
+.opening-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  gap: 28px;
+  align-items: start;
+}
+.opening .bio-copy {
+  margin-top: 24px;
+}
+@media (max-width: 600px) {
+  .hero.opening {
+    padding-block: 30px;
+  }
+  .opening-heading {
+    grid-template-columns: minmax(0, 1fr) 64px;
+    gap: 18px;
+  }
+  .opening .bio-copy {
+    margin-top: 22px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

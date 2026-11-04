@@ -50,7 +50,7 @@ function updateNavigation() {
       (item) => item.link.hash === window.location.hash,
     );
     const heading = anchored?.section
-      .querySelector("h2")
+      .querySelector("h1, h2")
       ?.getBoundingClientRect();
     current =
       heading &&

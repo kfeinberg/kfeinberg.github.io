@@ -138,7 +138,8 @@ async function verify() {
       );
       if (width <= 420)
         assert(
-          (await page.locator("#about-me h2").boundingBox()).y < 650,
+          (await page.locator("#about-me .professional-bio").boundingBox()).y <
+            650,
           "Mobile intro should not push About below the fold",
         );
       assert.equal(
@@ -168,7 +169,7 @@ async function verify() {
         await page
           .locator("main > section")
           .evaluateAll((sections) => sections.map((section) => section.id)),
-        ["intro-page", "about-me", "cs-projects", "experience"],
+        ["intro-page", "cs-projects", "experience"],
       );
       assert.deepEqual(
         await page
@@ -178,8 +179,17 @@ async function verify() {
           ),
         ["#about-me", "#cs-projects", "#experience", "#contact"],
       );
-      assert.equal(await page.locator("#about-me.bio-section").count(), 1);
-      assert.equal(await page.locator("#about-me h2").innerText(), "About");
+      assert.equal(await page.locator("#intro-page #about-me").count(), 1);
+      assert.equal(
+        await page.locator("#about-me .opening-heading h1").innerText(),
+        "Kalissa Feinberg",
+      );
+      assert.equal(
+        await page.locator("#about-me .hero-portrait img").count(),
+        1,
+      );
+      assert.equal(await page.locator("#about-me h2").count(), 0);
+      assert.equal(await page.locator("#intro-page .bio-copy").count(), 1);
       assert.match(
         await page.locator("#about-me .professional-bio").innerText(),
         /software engineer at Meta.*Applied AI.*privacy infrastructure.*VR/s,
@@ -313,7 +323,7 @@ async function verify() {
           const atEnd =
             scrollY >= document.documentElement.scrollHeight - innerHeight - 2;
           const headingBottom = document
-            .querySelector(`${selector} h2`)
+            .querySelector(`${selector} h1, ${selector} h2`)
             .getBoundingClientRect().bottom;
           return (
             top >= height - 2 &&
@@ -440,7 +450,7 @@ async function verify() {
     await landscapePage.locator('.navigation a[href="#about-me"]').click();
     await landscapePage.waitForFunction(() => {
       const heading = document
-        .querySelector("#about-me h2")
+        .querySelector("#about-me h1")
         .getBoundingClientRect();
       return (
         heading.top >=
