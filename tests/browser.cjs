@@ -88,7 +88,22 @@ async function verify() {
           await page
             .locator(".hero h1")
             .evaluate((element) => getComputedStyle(element).fontSize),
-        ) <= 48,
+        ) <= 64,
+      );
+      assert(
+        parseFloat(
+          await page
+            .locator(".hero h1")
+            .evaluate((element) => getComputedStyle(element).fontSize),
+        ) >= 38,
+      );
+      assert(
+        parseFloat(
+          await page
+            .locator(".bio-copy p")
+            .first()
+            .evaluate((element) => getComputedStyle(element).fontSize),
+        ) >= 16,
       );
       assert.deepEqual(
         await page

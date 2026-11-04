@@ -880,6 +880,108 @@ h3 {
     gap: 17px;
   }
 }
+/* Larger, readable type without adding visual weight or decoration. */
+h1 {
+  font-size: clamp(42px, 5.4vw, 64px);
+}
+h2,
+.contact-top h2,
+.project-body h2 {
+  font-size: 30px;
+}
+.eyebrow,
+.nav-links {
+  font-size: 14px;
+}
+.button,
+.text-link {
+  font-size: 15px;
+}
+.bio-copy p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+.bio-copy .media-intro {
+  font-size: 15px;
+}
+h3 {
+  font-size: 24px;
+}
+.project-info > p:not(.project-category) {
+  font-size: 15px;
+}
+.project-category,
+.project-count {
+  font-size: 12px;
+}
+.tags {
+  font-size: 11px;
+}
+.filter-button,
+.section-intro {
+  font-size: 14px;
+}
+.experience-detail h3 {
+  font-size: 21px;
+}
+.experience-detail > p {
+  font-size: 14px;
+}
+.experience-date,
+.footer-bottom > div {
+  font-size: 13px;
+}
+.project-page h1 {
+  font-size: clamp(38px, 5.4vw, 58px);
+}
+.project-body p,
+.workflow-steps {
+  font-size: 16px;
+}
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(38px, 8.5vw, 46px);
+  }
+  .hero .eyebrow,
+  .hero-actions a,
+  .navigation .nav-links {
+    font-size: 13px;
+  }
+  h2,
+  .contact-top h2 {
+    font-size: 28px;
+  }
+  .bio-copy p {
+    font-size: 16px;
+  }
+  .bio-copy .media-intro,
+  .section-intro,
+  .filter-button {
+    font-size: 13px;
+  }
+  .project-link {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .project-info h3 {
+    font-size: 22px;
+  }
+  .project-category {
+    font-size: 11px;
+  }
+  .project-info > p:not(.project-category) {
+    font-size: 14px;
+  }
+  .tags {
+    font-size: 10px;
+  }
+  .project-page h1 {
+    font-size: 38px;
+  }
+  .project-body p {
+    font-size: 16px;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
