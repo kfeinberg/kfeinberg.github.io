@@ -8,7 +8,7 @@ A responsive static website served by GitHub Pages from `master`. No build step,
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open <http://127.0.0.1:8765/>. The site uses a personal, reading-focused layout: warm off-white, self-hosted Newsreader for headings and prose, unobtrusive DM Sans navigation, and unboxed project rows. Profile links are inline rather than button-style calls to action. Original font licenses are in `assets/fonts/`.
+Open <http://127.0.0.1:8765/>. The site pairs a warm, reading-focused layout with a consistent cream-and-blue palette: self-hosted Newsreader headings and prose, a plain name heading, pale-blue project artwork backgrounds, and rounded navigation and filters. Orange is reserved for small accents. Subtle hover motion adds personality without heavy borders or offset shadows. The contact section and project detail pages share the same pale-blue surface color. Profile links remain inline, and the bio, project content, and earlier experience are unchanged. Original font licenses are in `assets/fonts/`.
 
 ## Checks
 

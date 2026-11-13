@@ -88,7 +88,7 @@ async function verify() {
           await page
             .locator(".hero h1")
             .evaluate((element) => getComputedStyle(element).fontSize),
-        ) <= 64,
+        ) <= 76,
       );
       assert(
         parseFloat(
@@ -138,7 +138,25 @@ async function verify() {
             .evaluate((element) => getComputedStyle(element).fontFamily)
         ).includes("Newsreader"),
       );
+      assert.equal(await page.locator(".studio-mark, .name-accent").count(), 0);
+      assert.equal(
+        await page
+          .locator(".hero h1")
+          .evaluate((element) => getComputedStyle(element).fontStyle),
+        "normal",
+      );
       assert.equal(await page.locator(".profile-links a").count(), 2);
+      assert.deepEqual(
+        await page
+          .locator(".project-visual, .contact-section")
+          .evaluateAll((elements) =>
+            elements.map(
+              (element) => getComputedStyle(element).backgroundColor,
+            ),
+          ),
+        Array(7).fill("rgb(232, 237, 255)"),
+        "Project backgrounds and the contact section must use the same blue wash",
+      );
       const tapTargets = await page
         .locator(
           ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",

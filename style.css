@@ -33,6 +33,14 @@
   font-weight: 700;
   font-display: swap;
 }
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("assets/fonts/instrument-serif-latin-400-italic.woff2")
+    format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
 :root {
   --paper: #ffffff;
   --ink: #22252a;
@@ -1081,27 +1089,40 @@ html.opening-snap {
     margin-top: 22px;
   }
 }
-/* A personal reading page, rather than a résumé-style product landing page. */
+/* A personal reading page with a little studio energy. */
 :root {
   --paper: #faf9f5;
-  --ink: #2b2d2b;
-  --muted: #666860;
-  --line: #deded5;
+  --ink: #2b2b36;
+  --muted: #62626d;
+  --line: #dfdfd9;
+  --wash: #e8edff;
   --reading-font: "Newsreader", Georgia, serif;
+}
+.shell {
+  width: min(960px, calc(100% - 72px));
 }
 .navigation {
   justify-content: flex-start;
-  min-height: 64px;
+  min-height: 72px;
 }
 .site-header {
   border-bottom: 0;
 }
 .nav-links {
-  gap: 25px;
-  font-size: 12px;
+  gap: 8px;
+  font-size: 13px;
 }
 .nav-links a {
-  padding-inline: 0;
+  padding-inline: 14px;
+  border: 0;
+  border-radius: 999px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+.nav-links a:hover,
+.nav-links a[aria-current="location"] {
+  background: var(--wash);
 }
 .hero h1,
 h2,
@@ -1112,25 +1133,30 @@ h3,
   letter-spacing: -0.028em;
 }
 .hero h1 {
-  font-size: clamp(44px, 5.4vw, 64px);
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 1.1;
 }
 .opening-heading {
-  align-items: center;
+  display: block;
 }
 .hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-size: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
-.hero-portrait {
-  width: 92px;
-}
-.hero-portrait img {
-  border-radius: 2px;
+.hero .eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
 }
 .bio-copy p {
   font-family: var(--reading-font);
-  font-size: 21px;
-  line-height: 1.48;
+  font-size: 22px;
+  line-height: 1.5;
   color: var(--ink);
 }
 .bio-copy p + p {
@@ -1150,79 +1176,153 @@ h3,
 .personal-links .text-link {
   border-bottom: 0;
   font-size: 13px;
+  color: var(--blue);
 }
 .text-link:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.text-link span[aria-hidden] {
+  transition: transform 180ms ease;
+}
+.text-link:hover span[aria-hidden] {
+  transform: translate(2px, -2px);
+}
 .personal-links {
   margin-top: 3px;
 }
 .scroll-cue {
-  font-family: var(--reading-font);
-  font-size: 15px;
+  font-family: var(--sans);
+  font-size: 12px;
+  gap: 12px;
+}
+.scroll-cue span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--blue);
+  background: var(--wash);
+  transition: transform 180ms ease;
+}
+.scroll-cue:hover span {
+  transform: translateY(3px);
 }
 .work-section {
   border-top: 1px solid var(--line);
-  padding-top: 42px;
+  padding-top: 48px;
 }
 .work-section h2 {
-  font-size: 34px;
+  font-size: 38px;
 }
 .section-intro {
-  font-size: 12px;
+  font-size: 13px;
 }
 .work-toolbar {
-  margin-bottom: 13px;
+  margin-bottom: 16px;
 }
 .project-count {
-  font-size: 10px;
-}
-.filter-button {
   font-size: 11px;
 }
+.project-filters {
+  gap: 6px;
+}
+.filter-button {
+  font-size: 12px;
+  padding-inline: 14px;
+  border: 0;
+  border-radius: 999px;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+.filter-button:hover {
+  background: var(--wash);
+}
+.filter-button[aria-pressed="true"] {
+  color: white;
+  background: var(--blue);
+}
 .project-grid {
-  row-gap: 10px;
+  row-gap: 12px;
 }
 .project-card {
   border-bottom: 0;
+  border-radius: 24px;
 }
 .project-link {
-  grid-template-columns: 150px minmax(0, 1fr);
+  grid-template-columns: 190px minmax(0, 1fr);
   gap: 30px;
-  padding-block: 22px;
-  align-items: start;
+  padding: 18px;
+  border-radius: inherit;
+  align-items: center;
+  transition: background-color 180ms ease;
+}
+.project-link:hover,
+.project-link:focus-visible {
+  background: #f0efe9;
 }
 .project-visual {
-  background: transparent;
-  padding: 6px;
-  height: 122px;
+  background: var(--wash);
+  padding: 18px;
+  height: 156px;
+  border-radius: 16px;
+}
+.visual-nextmove {
+  padding: 10px;
+}
+.project-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 28px;
+  height: 28px;
+  font-size: 17px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--paper);
+  transition: transform 180ms ease;
+}
+.project-link:hover .project-arrow {
+  transform: translate(2px, -2px);
 }
 .project-info h3 {
-  font-size: 27px;
+  font-size: 30px;
 }
 .project-category {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .project-info > p:not(.project-category) {
+  max-width: 58ch;
   font-family: var(--reading-font);
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.5;
   color: var(--muted);
 }
 .project-info .tags {
-  display: none;
+  display: flex;
+  font-size: 10px;
+  gap: 6px 12px;
+}
+.experience-section {
+  margin-top: 12px;
+  padding-block: 44px;
 }
 .experience-section h2 {
-  font-size: 30px;
+  font-size: 34px;
 }
 .experience-detail h3 {
-  font-size: 24px;
+  font-size: 26px;
 }
 .experience-detail > p {
   font-family: var(--reading-font);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.5;
 }
 .experience-detail .experience-role {
@@ -1231,22 +1331,34 @@ h3,
 }
 .experience-date {
   font-size: 11px;
+  border-left: 3px solid var(--orange);
+  padding-left: 12px;
+  align-self: start;
 }
 .contact-top h2 {
   font-family: var(--reading-font);
-  font-size: 28px;
+  font-size: 34px;
 }
 .contact-section {
-  border-top: 1px solid var(--line);
+  background: var(--wash);
+  border-top: 0;
+  padding-top: 32px;
 }
 .footer-bottom {
   border-top: 0;
   padding-top: 0;
 }
 .footer-bottom .wordmark {
-  font-family: var(--reading-font);
-  font-size: 18px;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: 28px;
   letter-spacing: -0.02em;
+  color: var(--blue);
+}
+.project-page .project-cover,
+.design-gallery figure {
+  background: var(--wash);
+  border-radius: 16px;
 }
 .project-body p,
 .workflow-steps {
@@ -1258,21 +1370,39 @@ h3,
   font-family: var(--reading-font);
   font-size: 30px;
 }
+@media (max-width: 800px) {
+  .shell {
+    width: calc(100% - 56px);
+  }
+  .project-link {
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 24px;
+    padding-inline: 12px;
+  }
+  .project-visual {
+    height: 140px;
+  }
+}
 @media (max-width: 600px) {
+  .shell {
+    width: calc(100% - 40px);
+  }
   .navigation {
-    min-height: 58px;
+    min-height: 62px;
+  }
+  .navigation .nav-links {
+    font-size: 12px;
+    gap: 4px;
+  }
+  .nav-links a {
+    padding-inline: 6px;
   }
   .hero h1 {
-    font-size: 42px;
+    font-size: clamp(44px, 11.7vw, 56px);
   }
   .hero .eyebrow {
     font-size: 11px;
-  }
-  .opening-heading {
-    grid-template-columns: minmax(0, 1fr) 64px;
-  }
-  .hero-portrait {
-    width: 64px;
+    margin-bottom: 20px;
   }
   .bio-copy p {
     font-size: 20px;
@@ -1285,13 +1415,40 @@ h3,
     gap: 24px;
     margin-top: 10px;
   }
+  .work-section {
+    padding-top: 36px;
+  }
+  .project-filters {
+    gap: 2px;
+  }
+  .filter-button {
+    font-size: 11px;
+    padding-inline: 10px;
+  }
   .project-link {
-    grid-template-columns: 78px minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 16px;
+    padding: 18px 0;
+    align-items: start;
+  }
+  .project-link:hover,
+  .project-link:focus-visible {
+    background: transparent;
   }
   .project-visual {
-    height: 90px;
-    padding: 0;
+    height: 98px;
+    padding: 9px;
+    border-radius: 12px;
+  }
+  .visual-nextmove {
+    padding: 5px;
+  }
+  .project-arrow {
+    right: 4px;
+    bottom: 4px;
+    width: 23px;
+    height: 23px;
+    font-size: 15px;
   }
   .project-info h3 {
     font-size: 25px;
@@ -1302,8 +1459,18 @@ h3,
   .project-category {
     font-size: 10px;
   }
-  .work-section h2 {
+  .project-info .tags {
+    display: none;
+  }
+  .work-section h2,
+  .experience-section h2 {
     font-size: 31px;
+  }
+  .experience-section {
+    padding-block: 32px;
+  }
+  .experience-row {
+    gap: 12px;
   }
   .project-body p {
     font-size: 19px;
@@ -1318,11 +1485,10 @@ h3,
     padding-top: 0;
   }
   .navigation .nav-links {
-    font-size: 12px;
-    gap: 15px;
+    gap: 3px;
   }
   .navigation .nav-links a {
-    padding-inline: 0;
+    padding-inline: 6px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
