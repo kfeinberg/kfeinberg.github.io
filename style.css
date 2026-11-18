@@ -436,9 +436,10 @@ html.opening-snap {
   position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 10;
-  padding: 20px;
+  padding: 16px;
+  border: 3px solid var(--sun);
   border-radius: 16px;
-  background: var(--sun);
+  background: var(--paper);
 }
 /* Every image fills its tile's inner box, so the yellow frame is even on all sides. */
 .project-visual img {
@@ -448,6 +449,8 @@ html.opening-snap {
   object-position: center;
   border-radius: 8px;
   background: white;
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
 }
 .project-visual.visual-top img {
   object-position: top left;
@@ -464,7 +467,7 @@ html.opening-snap {
   font-size: 17px;
   border-radius: 50%;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--sun);
   transition: transform 180ms ease;
 }
 .project-link:hover .project-arrow {
@@ -985,7 +988,7 @@ html.opening-snap {
     margin-top: 30px;
   }
   .project-visual {
-    padding: 14px;
+    padding: 12px;
   }
   .experience-section {
     padding-block: 32px;

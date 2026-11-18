@@ -199,15 +199,24 @@ async function verify() {
       );
       assert.equal(await page.locator(".profile-links a").count(), 2);
       assert.deepEqual(
+        await page.locator(".project-visual").evaluateAll((tiles) =>
+          tiles.map((tile) => {
+            const style = getComputedStyle(tile);
+            return [
+              style.borderTopColor,
+              style.borderTopWidth,
+              style.backgroundColor,
+            ];
+          }),
+        ),
+        Array(5).fill(["rgb(255, 210, 63)", "3px", "rgb(255, 255, 255)"]),
+        "Project images sit in matching yellow outlines on white",
+      );
+      assert.equal(
         await page
-          .locator(".project-visual, .contact-section")
-          .evaluateAll((elements) =>
-            elements.map(
-              (element) => getComputedStyle(element).backgroundColor,
-            ),
-          ),
-        [...Array(5).fill("rgb(255, 210, 63)"), "rgb(33, 73, 230)"],
-        "Project tiles share one sunny yellow; the contact band is solid blue",
+          .locator(".contact-section")
+          .evaluate((element) => getComputedStyle(element).backgroundColor),
+        "rgb(33, 73, 230)",
       );
       const frames = await page
         .locator(".project-visual")
