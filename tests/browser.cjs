@@ -72,7 +72,7 @@ async function verify() {
             style.getPropertyValue(key).trim(),
           );
         }),
-        ["#2149e6", "#ff8a42", "#faf9f5"],
+        ["#2149e6", "#ff7a1a", "#ffffff"],
       );
       assert.equal(
         await page
@@ -200,14 +200,20 @@ async function verify() {
       assert.equal(await page.locator(".profile-links a").count(), 2);
       assert.deepEqual(
         await page
-          .locator(".project-visual, .contact-section")
+          .locator(".project-visual:not(.visual-cover), .contact-section")
           .evaluateAll((elements) =>
             elements.map(
               (element) => getComputedStyle(element).backgroundColor,
             ),
           ),
-        Array(6).fill("rgb(232, 237, 255)"),
-        "Project backgrounds and the contact section must use the same blue wash",
+        [
+          "rgb(255, 122, 26)",
+          "rgb(33, 73, 230)",
+          "rgb(255, 210, 63)",
+          "rgb(255, 122, 26)",
+          "rgb(33, 73, 230)",
+        ],
+        "Project tiles and the contact band use the bright blue, yellow, and orange palette",
       );
       const tapTargets = await page
         .locator(
