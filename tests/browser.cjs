@@ -339,7 +339,7 @@ async function verify() {
       assert.deepEqual(references, [
         {
           text: "Applied AI",
-          href: "https://www.businessinsider.com/meta-ai-new-applied-engineering-team-2026-3",
+          href: "https://www.reuters.com/technology/meta-transfers-top-engineers-into-new-ai-tooling-team-2026-04-09/",
           target: "_blank",
           rel: "noopener noreferrer",
         },
