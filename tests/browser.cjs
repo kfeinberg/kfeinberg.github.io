@@ -200,14 +200,34 @@ async function verify() {
       assert.equal(await page.locator(".profile-links a").count(), 2);
       assert.deepEqual(
         await page
-          .locator(".project-visual:not(.visual-cover), .contact-section")
+          .locator(".project-visual, .contact-section")
           .evaluateAll((elements) =>
             elements.map(
               (element) => getComputedStyle(element).backgroundColor,
             ),
           ),
-        [...Array(4).fill("rgb(255, 210, 63)"), "rgb(33, 73, 230)"],
+        [...Array(5).fill("rgb(255, 210, 63)"), "rgb(33, 73, 230)"],
         "Project tiles share one sunny yellow; the contact band is solid blue",
+      );
+      const frames = await page
+        .locator(".project-visual")
+        .evaluateAll((tiles) =>
+          tiles.map((tile) => {
+            const outer = tile.getBoundingClientRect();
+            const inner = tile.querySelector("img").getBoundingClientRect();
+            return [
+              inner.top - outer.top,
+              outer.right - inner.right,
+              outer.bottom - inner.bottom,
+              inner.left - outer.left,
+            ];
+          }),
+        );
+      assert(
+        frames.every((sides) =>
+          sides.every((side) => Math.abs(side - frames[0][0]) <= 1),
+        ),
+        `Yellow frames must be even on every side at ${width}: ${JSON.stringify(frames)}`,
       );
       const tapTargets = await page
         .locator(
