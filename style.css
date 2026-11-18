@@ -441,13 +441,7 @@ html.opening-snap {
   aspect-ratio: 16 / 10;
   padding: 22px;
   border-radius: 16px;
-  background: var(--blue);
-}
-.project-visual.tile-sun {
   background: var(--sun);
-}
-.project-visual.tile-orange {
-  background: var(--orange);
 }
 .project-visual img {
   width: 100%;

@@ -206,14 +206,8 @@ async function verify() {
               (element) => getComputedStyle(element).backgroundColor,
             ),
           ),
-        [
-          "rgb(255, 122, 26)",
-          "rgb(33, 73, 230)",
-          "rgb(255, 210, 63)",
-          "rgb(255, 122, 26)",
-          "rgb(33, 73, 230)",
-        ],
-        "Project tiles and the contact band use the bright blue, yellow, and orange palette",
+        [...Array(4).fill("rgb(255, 210, 63)"), "rgb(33, 73, 230)"],
+        "Project tiles share one sunny yellow; the contact band is solid blue",
       );
       const tapTargets = await page
         .locator(
