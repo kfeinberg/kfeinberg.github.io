@@ -35,15 +35,15 @@
   font-display: swap;
 }
 
-/* Tokens: a bright palette of cobalt blue, sunny yellow, and tangerine on white. */
+/* Tokens: a bright palette of ocean blue, sunny yellow, and tangerine on white. */
 :root {
   --paper: #ffffff;
   --ink: #1f1f27;
   --muted: #5c5c66;
   --line: #e4e4e7;
-  --blue: #2149e6;
-  --blue-deep: #1a3bc4;
-  --blue-tint: #dce5ff;
+  --blue: #1f6fc5;
+  --blue-deep: #1a5da5;
+  --blue-tint: #eef3ff;
   --sun: #ffd23f;
   --orange: #ff7a1a;
   --orange-text: #c2410c;

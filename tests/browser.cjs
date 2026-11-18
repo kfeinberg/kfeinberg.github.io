@@ -72,7 +72,7 @@ async function verify() {
             style.getPropertyValue(key).trim(),
           );
         }),
-        ["#2149e6", "#ff7a1a", "#ffffff"],
+        ["#1f6fc5", "#ff7a1a", "#ffffff"],
       );
       assert.equal(
         await page
@@ -92,7 +92,7 @@ async function verify() {
         await page
           .locator(".project-card--feature")
           .evaluate((element) => getComputedStyle(element).backgroundColor),
-        "rgb(33, 73, 230)",
+        "rgb(31, 111, 197)",
         "Pulse is featured on the solid blue panel",
       );
       assert.equal(
@@ -216,7 +216,7 @@ async function verify() {
         await page
           .locator(".contact-section")
           .evaluate((element) => getComputedStyle(element).backgroundColor),
-        "rgb(33, 73, 230)",
+        "rgb(31, 111, 197)",
       );
       const frames = await page
         .locator(".project-visual")
