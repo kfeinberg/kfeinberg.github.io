@@ -81,8 +81,48 @@ async function verify() {
             (element) =>
               getComputedStyle(element).gridTemplateColumns.split(" ").length,
           ),
-        1,
+        width > 600 ? 2 : 1,
+        `Project grid columns at ${width}`,
       );
+      assert.equal(
+        await page.locator(".project-card").first().getAttribute("class"),
+        "project-card project-card--feature",
+      );
+      assert.equal(
+        await page
+          .locator(".project-card--feature")
+          .evaluate((element) => getComputedStyle(element).backgroundColor),
+        "rgb(33, 73, 230)",
+        "Pulse is featured on the solid blue panel",
+      );
+      assert.equal(
+        await page
+          .locator(".project-card--feature .feature-phones img")
+          .count(),
+        2,
+      );
+      assert.equal(
+        await page.locator(".mastermind-art, .paper-art").count(),
+        0,
+        "Projects use real images rather than CSS placeholders",
+      );
+      const smallText = await page.evaluate(() =>
+        [...document.querySelectorAll("body *")]
+          .filter(
+            (element) =>
+              !element.closest(".sr-only, .skip-link") &&
+              [...element.childNodes].some(
+                (node) => node.nodeType === 3 && node.textContent.trim(),
+              ) &&
+              element.getClientRects().length,
+          )
+          .map((element) => ({
+            text: element.textContent.trim().slice(0, 40),
+            size: parseFloat(getComputedStyle(element).fontSize),
+          }))
+          .filter((item) => item.size < 13),
+      );
+      assert.deepEqual(smallText, [], `Text below 13px at ${width}`);
       assert(
         parseFloat(
           await page
@@ -122,6 +162,18 @@ async function verify() {
           .evaluate((element) => getComputedStyle(element).backgroundColor),
         "rgba(0, 0, 0, 0)",
       );
+      assert.equal(
+        await page
+          .locator(".footer-bottom .wordmark")
+          .evaluate((element) => getComputedStyle(element).fontStyle),
+        "normal",
+        "The footer initials use plain type, not italics",
+      );
+      assert.equal(
+        await page.locator(".work-toolbar, .filter-button").count(),
+        0,
+        "Project filters are removed",
+      );
       assert.equal(await page.locator(".site-header .wordmark").count(), 0);
       assert.equal(await page.locator("#intro-page .button").count(), 0);
       assert(
@@ -154,12 +206,12 @@ async function verify() {
               (element) => getComputedStyle(element).backgroundColor,
             ),
           ),
-        Array(7).fill("rgb(232, 237, 255)"),
+        Array(6).fill("rgb(232, 237, 255)"),
         "Project backgrounds and the contact section must use the same blue wash",
       );
       const tapTargets = await page
         .locator(
-          ".navigation .nav-links a, .filter-button, .hero-actions a, .personal-links a, .footer-bottom > div > a",
+          ".navigation .nav-links a, .hero-actions a, .personal-links a, .footer-bottom > div > a",
         )
         .evaluateAll((elements) =>
           elements.map((element) => ({
@@ -475,25 +527,6 @@ async function verify() {
         (await page.locator(".hero .eyebrow").textContent()).trim(),
         "Engineering & building",
       );
-      for (const [filter, expected] of [
-        ["Engineering", 4],
-        ["Design & writing", 2],
-        ["All work", 6],
-      ]) {
-        const button = page.getByRole("button", {
-          name: new RegExp("^" + filter),
-        });
-        await button.click();
-        assert.equal(
-          await page.locator(".project-card:visible").count(),
-          expected,
-        );
-        assert.equal(await button.getAttribute("aria-pressed"), "true");
-        assert.equal(
-          await page.locator(".project-count").innerText(),
-          `${expected} projects`,
-        );
-      }
       for (const target of ["#cs-projects", "#about-me", "#experience"]) {
         await page.locator(`.nav-links a[href="${target}"]`).click();
         await page.waitForFunction((selector) => {
@@ -522,14 +555,6 @@ async function verify() {
           target,
         );
       }
-      const allWork = page.getByRole("button", { name: /^All work/ });
-      const engineering = page.getByRole("button", { name: /^Engineering/ });
-      await engineering.focus();
-      await page.keyboard.press("Enter");
-      assert.equal(await page.locator(".project-card:visible").count(), 4);
-      await allWork.focus();
-      await page.keyboard.press("Space");
-      assert.equal(await page.locator(".project-card:visible").count(), 6);
       assert.deepEqual(errors, []);
       const result = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -681,7 +706,6 @@ async function verify() {
     const plain = await noJS.newPage();
     await plain.goto(origin);
     assert.equal(await plain.locator(".project-card:visible").count(), 6);
-    assert.equal(await plain.locator(".work-toolbar:visible").count(), 0);
     await noJS.close();
     const reduced = await browser.newContext({ reducedMotion: "reduce" });
     const motion = await reduced.newPage();
@@ -708,7 +732,7 @@ async function verify() {
       "Accessibility violations: see test-results/accessibility.json",
     );
     console.log(
-      "PASS: responsive/landscape layouts, 8 pages, 6 projects, keyboard controls, tap targets, active navigation, About/history, supplied résumé, links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
+      "PASS: responsive/landscape layouts, 8 pages, 6 projects with a featured Pulse card, 13px minimum text, keyboard controls, tap targets, active navigation, About/history, supplied résumé, links/images, no-JS, reduced motion, and automated WCAG A/AA checks.",
     );
   } finally {
     await browser.close();

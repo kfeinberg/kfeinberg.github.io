@@ -125,60 +125,23 @@
           <h2 id="work-heading">Things I’ve built</h2>
           <p class="section-intro">Selected apps, tools, and earlier work.</p>
         </div>
-        <div class="work-toolbar" hidden>
-          <div
-            class="project-filters"
-            role="group"
-            aria-label="Filter projects"
-          >
-            <button
-              type="button"
-              class="filter-button"
-              data-filter="all"
-              aria-pressed="true"
-            >
-              All work <span>6</span></button
-            ><button
-              type="button"
-              class="filter-button"
-              data-filter="code"
-              aria-pressed="false"
-            >
-              Engineering <span>4</span></button
-            ><button
-              type="button"
-              class="filter-button"
-              data-filter="creative"
-              aria-pressed="false"
-            >
-              Design &amp; writing <span>2</span>
-            </button>
-          </div>
-          <p
-            class="project-count"
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            6 projects
-          </p>
-        </div>
         <div class="project-grid">
-          <article class="project-card" data-category="code">
+          <article class="project-card project-card--feature">
             <a
               class="project-link"
               href="https://apps.apple.com/us/app/pulse-map-nyc-event-discover/id6760617130"
               target="_blank"
               rel="noopener noreferrer"
-              ><div class="project-visual visual-pulse">
+            >
+              <div class="project-info">
                 <img
                   class="pulse-icon"
                   src="assets/pulse-icon.jpg"
                   alt="Pulse app icon"
+                  width="512"
+                  height="512"
                   loading="lazy"
-                /><span class="project-arrow" aria-hidden="true">↗</span>
-              </div>
-              <div class="project-info">
+                />
                 <p class="project-category">
                   iOS app · Available on the App Store
                 </p>
@@ -192,11 +155,30 @@
                   <li>Maps</li>
                   <li>NYC events</li>
                 </ul>
+                <span class="feature-cta" aria-hidden="true"
+                  >View on the App Store <span>↗</span></span
+                >
                 <span class="sr-only">Opens the App Store in a new tab.</span>
-              </div></a
-            >
+              </div>
+              <div class="feature-phones">
+                <img
+                  src="assets/pulse-map.jpg"
+                  alt="Pulse map of Brooklyn with event pins and a form for dropping a new pin"
+                  width="416"
+                  height="900"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/pulse-home.jpg"
+                  alt="Pulse start screen listing event categories over a map of Manhattan"
+                  width="416"
+                  height="900"
+                  loading="lazy"
+                />
+              </div>
+            </a>
           </article>
-          <article class="project-card" data-category="code">
+          <article class="project-card project-card--wide">
             <a class="project-link" href="cs-projects/nextmove.html">
               <div class="project-visual visual-nextmove">
                 <img
@@ -223,12 +205,14 @@
               </div>
             </a>
           </article>
-          <article class="project-card" data-category="code">
+          <article class="project-card">
             <a class="project-link" href="cs-projects/word-catcher.html"
-              ><div class="project-visual visual-lilac">
+              ><div class="project-visual">
                 <img
                   src="assets/extension.png"
                   alt="Word Catcher dictionary extension interface"
+                  width="2556"
+                  height="1153"
                   loading="lazy"
                 /><span class="project-arrow" aria-hidden="true">↗</span>
               </div>
@@ -247,12 +231,14 @@
               </div></a
             >
           </article>
-          <article class="project-card" data-category="creative">
+          <article class="project-card">
             <a class="project-link" href="cs-projects/design.html"
-              ><div class="project-visual visual-peach">
+              ><div class="project-visual">
                 <img
                   src="assets/mo-studios.png"
                   alt="Mo Studios logo from the design portfolio"
+                  width="2294"
+                  height="1408"
                   loading="lazy"
                 /><span class="project-arrow" aria-hidden="true">↗</span>
               </div>
@@ -271,15 +257,16 @@
               </div></a
             >
           </article>
-          <article class="project-card" data-category="code">
+          <article class="project-card">
             <a class="project-link" href="cs-projects/smart-guesser.html"
-              ><div class="project-visual visual-yellow">
-                <div class="mastermind-art" aria-hidden="true">
-                  <div><i></i><i></i><i></i><i></i></div>
-                  <div><i></i><i></i><i></i><i></i></div>
-                  <div><i></i><i></i><i></i><i></i></div>
-                </div>
-                <span class="project-arrow" aria-hidden="true">↗</span>
+              ><div class="project-visual visual-cover">
+                <img
+                  src="assets/mastermind.jpg"
+                  alt="Mastermind board with colored code pegs"
+                  width="1309"
+                  height="900"
+                  loading="lazy"
+                /><span class="project-arrow" aria-hidden="true">↗</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Algorithms · 2018</p>
@@ -296,14 +283,16 @@
               </div></a
             >
           </article>
-          <article class="project-card" data-category="creative">
+          <article class="project-card">
             <a class="project-link" href="assets/FinalProject.pdf"
               ><div class="project-visual visual-paper">
-                <div class="paper-art" aria-hidden="true">
-                  <span>The<br />Turing Test</span
-                  ><span class="paper-rule"></span><small>Research paper</small>
-                </div>
-                <span class="project-arrow" aria-hidden="true">↗</span>
+                <img
+                  src="assets/turing-paper.jpg"
+                  alt="First page of the Turing Test research paper"
+                  width="900"
+                  height="626"
+                  loading="lazy"
+                /><span class="project-arrow" aria-hidden="true">↗</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Research &amp; writing · PDF</p>
