@@ -35,18 +35,19 @@
   font-display: swap;
 }
 
-/* Tokens: warm cream and blue, with orange as a small accent only. */
+/* Tokens: a bright palette of ocean blue, sunny yellow, and tangerine on white. */
 :root {
-  --paper: #faf9f5;
-  --ink: #2b2b36;
-  --muted: #62626d;
-  --line: #dfdfd9;
-  --blue: #2149e6;
-  --blue-deep: #1a3bc4;
-  --blue-tint: #dce5ff;
-  --orange: #ff8a42;
-  --wash: #e8edff;
-  --hover: #f0efe9;
+  --paper: #ffffff;
+  --ink: #1f1f27;
+  --muted: #5c5c66;
+  --line: #e4e4e7;
+  --blue: #1f6fc5;
+  --blue-deep: #1a5da5;
+  --blue-tint: #eef3ff;
+  --sun: #ffd23f;
+  --orange: #ff7a1a;
+  --orange-text: #c2410c;
+  --hover: #f3f3f5;
   --sans: "DM Sans", Arial, sans-serif;
   --reading-font: "Newsreader", Georgia, serif;
 }
@@ -69,7 +70,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: var(--blue-tint);
+  background: var(--sun);
   color: var(--ink);
 }
 a {
@@ -183,7 +184,7 @@ h3 {
   color: var(--ink);
 }
 .wordmark span {
-  color: #a64200;
+  color: var(--orange-text);
 }
 .nav-links {
   display: flex;
@@ -203,10 +204,13 @@ h3 {
     background-color 180ms ease,
     color 180ms ease;
 }
-.nav-links a:hover,
+.nav-links a:hover {
+  color: var(--ink);
+  background: var(--hover);
+}
 .nav-links a[aria-current="location"] {
-  color: var(--blue);
-  background: var(--wash);
+  color: var(--ink);
+  background: var(--sun);
 }
 .nav-links a span {
   margin-left: 6px;
@@ -305,8 +309,8 @@ h3 {
   height: 32px;
   font-size: 17px;
   border-radius: 50%;
-  color: var(--blue);
-  background: var(--wash);
+  color: var(--ink);
+  background: var(--sun);
   transition: transform 180ms ease;
 }
 .scroll-cue:hover span {
@@ -431,34 +435,25 @@ html.opening-snap {
 .project-visual {
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   aspect-ratio: 16 / 10;
-  padding: 22px;
+  padding: 16px;
+  border: 3px solid var(--sun);
   border-radius: 16px;
-  background: var(--wash);
+  background: var(--paper);
 }
+/* Every image fills its tile's inner box, so the yellow frame is even on all sides. */
 .project-visual img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-.project-visual.visual-cover {
-  padding: 0;
-}
-.project-visual.visual-cover img {
   object-fit: cover;
-}
-.project-visual.visual-paper {
-  align-items: flex-end;
-  padding: 26px 44px 0;
-}
-.project-visual.visual-paper img {
-  object-fit: cover;
-  object-position: top;
-  border-radius: 8px 8px 0 0;
+  object-position: center;
+  border-radius: 8px;
   background: white;
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+}
+.project-visual.visual-top img {
+  object-position: top left;
 }
 .project-arrow {
   position: absolute;
@@ -472,7 +467,7 @@ html.opening-snap {
   font-size: 17px;
   border-radius: 50%;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--sun);
   transition: transform 180ms ease;
 }
 .project-link:hover .project-arrow {
@@ -521,7 +516,6 @@ html.opening-snap {
 }
 .project-card--wide .project-visual {
   aspect-ratio: 3 / 2;
-  padding: 12px;
 }
 
 /* Featured card: a solid blue panel with real app screens. */
@@ -668,8 +662,18 @@ html.opening-snap {
 /* Contact and footer */
 .contact-section {
   padding-top: 32px;
-  color: var(--ink);
-  background: var(--wash);
+  color: white;
+  background: var(--blue);
+}
+.contact-section a:hover,
+.contact-section .button {
+  color: white;
+}
+.contact-section .wordmark {
+  color: white;
+}
+.contact-section .wordmark span {
+  color: var(--sun);
 }
 .contact-top {
   display: flex;
@@ -693,7 +697,7 @@ html.opening-snap {
   flex-wrap: wrap;
   gap: 21px;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--blue-tint);
 }
 .footer-bottom > div > a {
   display: inline-flex;
@@ -745,7 +749,7 @@ html.opening-snap {
   margin-top: 28px;
   padding: 20px;
   border-radius: 16px;
-  background: var(--wash);
+  background: var(--sun);
 }
 .project-cover img {
   width: 100%;
@@ -755,6 +759,10 @@ html.opening-snap {
 .nextmove-screenshot img {
   max-height: none;
 }
+.project-cover a,
+.design-gallery a {
+  color: var(--ink);
+}
 .nextmove-screenshot figcaption {
   display: flex;
   flex-wrap: wrap;
@@ -762,7 +770,7 @@ html.opening-snap {
   gap: 8px 24px;
   margin-top: 12px;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--ink);
 }
 .project-body {
   max-width: 650px;
@@ -821,7 +829,7 @@ html.opening-snap {
 .design-gallery figure {
   padding: 15px;
   border-radius: 16px;
-  background: var(--wash);
+  background: var(--sun);
 }
 .design-gallery img {
   width: 100%;
@@ -829,7 +837,7 @@ html.opening-snap {
 .design-gallery figcaption {
   margin-top: 12px;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--ink);
 }
 
 /* Tablet */
@@ -979,8 +987,8 @@ html.opening-snap {
   .feature-phones img + img {
     margin-top: 30px;
   }
-  .project-visual.visual-paper {
-    padding: 20px 32px 0;
+  .project-visual {
+    padding: 12px;
   }
   .experience-section {
     padding-block: 32px;

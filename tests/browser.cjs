@@ -72,7 +72,7 @@ async function verify() {
             style.getPropertyValue(key).trim(),
           );
         }),
-        ["#2149e6", "#ff8a42", "#faf9f5"],
+        ["#1f6fc5", "#ff7a1a", "#ffffff"],
       );
       assert.equal(
         await page
@@ -92,7 +92,7 @@ async function verify() {
         await page
           .locator(".project-card--feature")
           .evaluate((element) => getComputedStyle(element).backgroundColor),
-        "rgb(33, 73, 230)",
+        "rgb(31, 111, 197)",
         "Pulse is featured on the solid blue panel",
       );
       assert.equal(
@@ -199,15 +199,44 @@ async function verify() {
       );
       assert.equal(await page.locator(".profile-links a").count(), 2);
       assert.deepEqual(
+        await page.locator(".project-visual").evaluateAll((tiles) =>
+          tiles.map((tile) => {
+            const style = getComputedStyle(tile);
+            return [
+              style.borderTopColor,
+              style.borderTopWidth,
+              style.backgroundColor,
+            ];
+          }),
+        ),
+        Array(5).fill(["rgb(255, 210, 63)", "3px", "rgb(255, 255, 255)"]),
+        "Project images sit in matching yellow outlines on white",
+      );
+      assert.equal(
         await page
-          .locator(".project-visual, .contact-section")
-          .evaluateAll((elements) =>
-            elements.map(
-              (element) => getComputedStyle(element).backgroundColor,
-            ),
-          ),
-        Array(6).fill("rgb(232, 237, 255)"),
-        "Project backgrounds and the contact section must use the same blue wash",
+          .locator(".contact-section")
+          .evaluate((element) => getComputedStyle(element).backgroundColor),
+        "rgb(31, 111, 197)",
+      );
+      const frames = await page
+        .locator(".project-visual")
+        .evaluateAll((tiles) =>
+          tiles.map((tile) => {
+            const outer = tile.getBoundingClientRect();
+            const inner = tile.querySelector("img").getBoundingClientRect();
+            return [
+              inner.top - outer.top,
+              outer.right - inner.right,
+              outer.bottom - inner.bottom,
+              inner.left - outer.left,
+            ];
+          }),
+        );
+      assert(
+        frames.every((sides) =>
+          sides.every((side) => Math.abs(side - frames[0][0]) <= 1),
+        ),
+        `Yellow frames must be even on every side at ${width}: ${JSON.stringify(frames)}`,
       );
       const tapTargets = await page
         .locator(
@@ -319,7 +348,7 @@ async function verify() {
       assert.deepEqual(references, [
         {
           text: "Applied AI",
-          href: "https://www.businessinsider.com/meta-ai-new-applied-engineering-team-2026-3",
+          href: "https://www.reuters.com/technology/meta-transfers-top-engineers-into-new-ai-tooling-team-2026-04-09/",
           target: "_blank",
           rel: "noopener noreferrer",
         },
