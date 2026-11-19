@@ -14,19 +14,13 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
+    <header class="site-header site-header--project">
       <nav class="navigation shell" aria-label="Main navigation">
-        <a
-          class="wordmark"
-          href="../index.html"
-          aria-label="Kalissa Feinberg, home"
-          >kf<span aria-hidden="true">.</span></a
-        >
         <div class="nav-links">
           <a href="../index.html#about-me">About</a>
-          <a href="../index.html#cs-projects">Projects</a>
+          <a href="../index.html#cs-projects" aria-current="true">Projects</a>
           <a href="../index.html#experience">Experience</a>
-          <a href="../index.html#contact">Contact ↗</a>
+          <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
     </header>
@@ -44,12 +38,23 @@
         </ul>
       </div>
       <figure class="project-cover nextmove-screenshot">
-        <img
-          src="../assets/nextmove-dashboard.png"
-          alt="NextMove application dashboard showing a board of sample opportunities organized by status"
-          width="1440"
-          height="960"
-        />
+        <a
+          class="image-preview"
+          href="../assets/nextmove-dashboard.png"
+          data-image-viewer
+          aria-label="Enlarge image: NextMove dashboard screenshot"
+        >
+          <img
+            src="../assets/nextmove-dashboard.png"
+            alt="NextMove application dashboard showing a board of sample opportunities organized by status"
+            width="1440"
+            height="960"
+            decoding="async"
+          />
+          <span class="image-preview-hint" aria-hidden="true"
+            >Enlarge image ↗</span
+          >
+        </a>
         <figcaption>
           NextMove dashboard. Illustrative sample records replace personal data.
           <a class="text-link" href="../assets/nextmove-dashboard.png"

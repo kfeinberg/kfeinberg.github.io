@@ -26,8 +26,7 @@
       <nav class="navigation shell" aria-label="Main navigation">
         <div class="nav-links">
           <a href="#about-me">About</a><a href="#cs-projects">Projects</a
-          ><a href="#experience">Experience</a
-          ><a href="#contact">Contact <span aria-hidden="true">↗</span></a>
+          ><a href="#experience">Experience</a><a href="#contact">Contact</a>
         </div>
       </nav>
     </header>
@@ -132,6 +131,8 @@
               href="https://apps.apple.com/us/app/pulse-map-nyc-event-discover/id6760617130"
               target="_blank"
               rel="noopener noreferrer"
+              aria-labelledby="pulse-title pulse-action"
+              aria-describedby="pulse-summary pulse-destination"
             >
               <div class="project-info">
                 <img
@@ -145,8 +146,8 @@
                 <p class="project-category">
                   iOS app · Available on the App Store
                 </p>
-                <h3>Pulse</h3>
-                <p>
+                <h3 id="pulse-title">Pulse</h3>
+                <p id="pulse-summary">
                   Discover NYC events on a live map. Browse by category and
                   time, explore nearby events, and share community reports.
                 </p>
@@ -155,10 +156,13 @@
                   <li>Maps</li>
                   <li>NYC events</li>
                 </ul>
-                <span class="feature-cta" aria-hidden="true"
-                  >View on the App Store <span>↗</span></span
+                <span class="feature-cta" id="pulse-action"
+                  >View on the App Store
+                  <span aria-hidden="true">↗</span></span
                 >
-                <span class="sr-only">Opens the App Store in a new tab.</span>
+                <span class="sr-only" id="pulse-destination"
+                  >Opens the App Store in a new tab.</span
+                >
               </div>
               <div class="feature-phones">
                 <img
@@ -179,7 +183,12 @@
             </a>
           </article>
           <article class="project-card project-card--wide">
-            <a class="project-link" href="cs-projects/nextmove.html">
+            <a
+              class="project-link"
+              href="cs-projects/nextmove.html"
+              aria-labelledby="nextmove-title nextmove-action"
+              aria-describedby="nextmove-summary"
+            >
               <div class="project-visual visual-top">
                 <img
                   class="nextmove-preview"
@@ -189,12 +198,12 @@
                   height="960"
                   loading="lazy"
                 />
-                <span class="project-arrow" aria-hidden="true">↗</span>
+                <span class="project-arrow" aria-hidden="true">→</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Personal tool</p>
-                <h3>NextMove</h3>
-                <p>
+                <h3 id="nextmove-title">NextMove</h3>
+                <p id="nextmove-summary">
                   A dashboard I built to turn daily email updates into organized
                   information and next steps.
                 </p>
@@ -202,24 +211,33 @@
                   <li>Personal tools</li>
                   <li>AI-assisted development</li>
                 </ul>
+                <span class="project-cta" id="nextmove-action"
+                  >View project <span aria-hidden="true">→</span></span
+                >
               </div>
             </a>
           </article>
           <article class="project-card">
-            <a class="project-link" href="cs-projects/word-catcher.html"
-              ><div class="project-visual visual-top">
+            <a
+              class="project-link"
+              href="cs-projects/word-catcher.html"
+              aria-labelledby="word-catcher-title word-catcher-action"
+              aria-describedby="word-catcher-summary"
+            >
+              <div class="project-visual visual-top">
                 <img
                   src="assets/extension.png"
                   alt="Word Catcher dictionary extension interface"
                   width="2556"
                   height="1153"
                   loading="lazy"
-                /><span class="project-arrow" aria-hidden="true">↗</span>
+                />
+                <span class="project-arrow" aria-hidden="true">→</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Browser extension · 2018</p>
-                <h3>Word Catcher</h3>
-                <p>
+                <h3 id="word-catcher-title">Word Catcher</h3>
+                <p id="word-catcher-summary">
                   A Chrome extension for looking up and saving words. Built with
                   students at Girls Who Code.
                 </p>
@@ -228,24 +246,33 @@
                   <li>HTML &amp; CSS</li>
                   <li>Chrome</li>
                 </ul>
-              </div></a
-            >
+                <span class="project-cta" id="word-catcher-action"
+                  >View project <span aria-hidden="true">→</span></span
+                >
+              </div>
+            </a>
           </article>
           <article class="project-card">
-            <a class="project-link" href="cs-projects/design.html"
-              ><div class="project-visual">
+            <a
+              class="project-link"
+              href="cs-projects/design.html"
+              aria-labelledby="design-title design-action"
+              aria-describedby="design-summary"
+            >
+              <div class="project-visual">
                 <img
                   src="assets/mo-studios.png"
                   alt="Mo Studios logo from the design portfolio"
                   width="2294"
                   height="1408"
                   loading="lazy"
-                /><span class="project-arrow" aria-hidden="true">↗</span>
+                />
+                <span class="project-arrow" aria-hidden="true">→</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Visual design</p>
-                <h3>Design work</h3>
-                <p>
+                <h3 id="design-title">Design work</h3>
+                <p id="design-summary">
                   A selection of logos, presentation decks, posters, and
                   editorial layouts.
                 </p>
@@ -254,24 +281,33 @@
                   <li>Layout</li>
                   <li>Print</li>
                 </ul>
-              </div></a
-            >
+                <span class="project-cta" id="design-action"
+                  >View project <span aria-hidden="true">→</span></span
+                >
+              </div>
+            </a>
           </article>
           <article class="project-card">
-            <a class="project-link" href="cs-projects/smart-guesser.html"
-              ><div class="project-visual">
+            <a
+              class="project-link"
+              href="cs-projects/smart-guesser.html"
+              aria-labelledby="mastermind-title mastermind-action"
+              aria-describedby="mastermind-summary"
+            >
+              <div class="project-visual">
                 <img
                   src="assets/mastermind.jpg"
                   alt="Mastermind board with colored code pegs"
                   width="1309"
                   height="900"
                   loading="lazy"
-                /><span class="project-arrow" aria-hidden="true">↗</span>
+                />
+                <span class="project-arrow" aria-hidden="true">→</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Algorithms · 2018</p>
-                <h3>Mastermind solver</h3>
-                <p>
+                <h3 id="mastermind-title">Mastermind solver</h3>
+                <p id="mastermind-summary">
                   A Java algorithm that uses minimax game theory to solve
                   Mastermind efficiently.
                 </p>
@@ -280,24 +316,33 @@
                   <li>Minimax</li>
                   <li>Game theory</li>
                 </ul>
-              </div></a
-            >
+                <span class="project-cta" id="mastermind-action"
+                  >View project <span aria-hidden="true">→</span></span
+                >
+              </div>
+            </a>
           </article>
           <article class="project-card">
-            <a class="project-link" href="assets/FinalProject.pdf"
-              ><div class="project-visual visual-top">
+            <a
+              class="project-link"
+              href="assets/FinalProject.pdf"
+              aria-labelledby="turing-title turing-action"
+              aria-describedby="turing-summary"
+            >
+              <div class="project-visual visual-top">
                 <img
                   src="assets/turing-paper.jpg"
                   alt="First page of the Turing Test research paper"
                   width="900"
                   height="626"
                   loading="lazy"
-                /><span class="project-arrow" aria-hidden="true">↗</span>
+                />
+                <span class="project-arrow" aria-hidden="true">→</span>
               </div>
               <div class="project-info">
                 <p class="project-category">Research &amp; writing · PDF</p>
-                <h3>The Turing Test</h3>
-                <p>
+                <h3 id="turing-title">The Turing Test</h3>
+                <p id="turing-summary">
                   A paper on key moments in the history and legacy of the Turing
                   Test.
                 </p>
@@ -306,8 +351,11 @@
                   <li>History</li>
                   <li>Writing</li>
                 </ul>
-              </div></a
-            >
+                <span class="project-cta" id="turing-action"
+                  >Read paper (PDF) <span aria-hidden="true">→</span></span
+                >
+              </div>
+            </a>
           </article>
         </div>
       </section>

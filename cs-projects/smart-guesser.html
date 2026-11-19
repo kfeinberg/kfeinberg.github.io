@@ -14,19 +14,13 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
+    <header class="site-header site-header--project">
       <nav class="navigation shell" aria-label="Main navigation">
-        <a
-          class="wordmark"
-          href="../index.html"
-          aria-label="Kalissa Feinberg, home"
-          >kf<span aria-hidden="true">.</span></a
-        >
         <div class="nav-links">
           <a href="../index.html#about-me">About</a>
-          <a href="../index.html#cs-projects">Projects</a>
+          <a href="../index.html#cs-projects" aria-current="true">Projects</a>
           <a href="../index.html#experience">Experience</a>
-          <a href="../index.html#contact">Contact ↗</a>
+          <a href="../index.html#contact">Contact</a>
         </div>
       </nav>
     </header>
@@ -47,10 +41,23 @@
         </ul>
       </div>
       <figure class="project-cover">
-        <img
-          src="../assets/mastermind.jpg"
-          alt="Mastermind game with colored code pegs"
-        />
+        <a
+          class="image-preview"
+          href="../assets/mastermind.jpg"
+          data-image-viewer
+          aria-label="Enlarge image: Mastermind"
+        >
+          <img
+            src="../assets/mastermind.jpg"
+            alt="Mastermind game with colored code pegs"
+            width="1309"
+            height="900"
+            decoding="async"
+          />
+          <span class="image-preview-hint" aria-hidden="true"
+            >Enlarge image ↗</span
+          >
+        </a>
       </figure>
       <div class="project-body">
         <h2>Overview</h2>
