@@ -12,7 +12,11 @@ assert(source.includes("Muse"));
 assert(source.includes("email every day"));
 assert(source.includes("structured data"));
 assert(source.includes("dashboard"));
-assert(source.includes("The app is private."));
+assert(
+  !/The app is private|without sharing|Illustrative sample|personal data/.test(
+    source,
+  ),
+);
 assert(!/mailto:|internalfb|internalmeta|gmail\.com/.test(source));
 const server = http.createServer((request, response) => {
   const file = path.resolve(
@@ -72,7 +76,7 @@ const server = http.createServer((request, response) => {
       assert(
         (
           await page.locator(".nextmove-screenshot figcaption").innerText()
-        ).includes("Illustrative sample records"),
+        ).startsWith("NextMove dashboard."),
       );
       const scan = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
