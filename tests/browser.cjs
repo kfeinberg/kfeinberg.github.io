@@ -333,7 +333,7 @@ async function verify() {
       );
       assert.equal(
         await page.locator("#about-me .professional-bio").innerText(),
-        "I’m a software engineer at Meta, working on Applied AI. Previously, I worked on privacy infrastructure and VR system software.",
+        "I’m a senior software engineer at Meta, working on Applied AI. Previously, I worked on privacy infrastructure and VR system software.",
       );
       const references = await page
         .locator(".professional-bio a")
